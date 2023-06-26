@@ -1,7 +1,7 @@
 // import fetchData from 'api/themoviedb';
 import { useState } from 'react';
 
-const Input = ({ onSubmit, movies }) => {
+export const Input = ({ onSubmit, movies }) => {
   const [query, setQuery] = useState('');
   //   const [movies, setMovies] = useState('');
 
@@ -51,11 +51,6 @@ const Input = ({ onSubmit, movies }) => {
         autoFocus
         placeholder="Search images and photos"
       />
-
-      {/* {movies &&
-        movies.map(movie => <div key={movie.title}>{movie.title}</div>)} */}
     </form>
   );
 };
-
-export default Input;

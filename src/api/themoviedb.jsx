@@ -34,3 +34,13 @@ export const fetchData = async query => {
     return [];
   }
 };
+
+export const fetchMovieDetails = async id => {
+  try {
+    const { data } = await axios.get(`/movie/${id}`);
+    return data;
+  } catch (error) {
+    window.alert(error);
+    return [];
+  }
+};
