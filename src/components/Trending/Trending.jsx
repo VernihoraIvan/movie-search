@@ -1,59 +1,50 @@
-// import fetchData from 'api/themoviedb';
 // import { useState, useEffect } from 'react';
 
-// const Trending = ({ onSubmit }) => {
-// //   const [query, setQuery] = useState('');
-// //   const [movies, setMovies] = useState('');
+const Trending = ({ movies }) => {
+  console.log(movies);
+  //   const [query, setQuery] = useState('');
+  //   const [movies, setMovies] = useState('');
 
-//   const handleSubmit = event => {
-//     event.preventDefault();
-//     setQuery(event.target.value);
-//     if (query === '') {
-//       return;
-//     }
-//     if (query === event.target.value) {
-//       return;
-//     }
-//     onSubmit(query);
-//     setQuery('');
-//   };
+  //   const handleSubmit = event => {
+  //     event.preventDefault();
+  //     setQuery(event.target.value);
+  //     if (query === '') {
+  //       return;
+  //     }
+  //     if (query === event.target.value) {
+  //       return;
+  //     }
+  //     onSubmit(query);
+  //     setQuery('');
+  //   };
 
-//   const handleChange = async event => {
-//     event.preventDefault();
-//     await setQuery(event.target.value);
-//   };
+  //   const handleChange = async event => {
+  //     event.preventDefault();
+  //     await setQuery(event.target.value);
+  //   };
 
-//   // useEffect(() => {
-//   // async function fetchData() {
-//   //   // You can await here
-//   //   const response = await MyAPI.getData(someId);
-//   //   // ...
-//   // }
-//   // fetchData();
+  // useEffect(() => {
+  // async function fetchData() {
+  //   // You can await here
+  //   const response = await MyAPI.getData(someId);
+  //   // ...
+  // }
+  // fetchData();
 
-//   //   setImageProfiles(prevState => [...prevState, ...data.hits]);
+  //   setImageProfiles(prevState => [...prevState, ...data.hits]);
 
-//   useEffect(() => {
-//     const data = fetchData(query);
-//     setMovies(state => [...state, data.title]);
-//   }, [query]);
+  //   useEffect(() => {
+  //     const data = fetchData(query);
+  //     setMovies(state => [...state, data.title]);
+  //   }, [query]);
 
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <button type="submit">
-//         <span>Search</span>
-//       </button>
-//       <input
-//         value={query}
-//         onChange={handleChange}
-//         type="text"
-//         autoComplete="off"
-//         autoFocus
-//         placeholder="Search images and photos"
-//       />
-//     </form>
-//     {movies.map(movie => {<div>dcsd</div> })}
-//   );
-// };
+  return (
+    <ul>
+      {movies.map(movie => (
+        <li key={movie.id}>{movie.title}</li>
+      ))}
+    </ul>
+  );
+};
 
-// export default Trending;
+export default Trending;

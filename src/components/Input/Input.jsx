@@ -1,5 +1,5 @@
-import fetchData from 'api/themoviedb';
-import { useState, useEffect } from 'react';
+// import fetchData from 'api/themoviedb';
+import { useState } from 'react';
 
 const Input = ({ onSubmit, movies }) => {
   const [query, setQuery] = useState('');

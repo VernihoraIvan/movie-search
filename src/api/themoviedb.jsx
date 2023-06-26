@@ -5,16 +5,32 @@ import axios from 'axios';
 //   return data;
 // };
 
-const fetchData = async query => {
-  const KEY = '34a3f3c9cce4f4b9cc46f3708ad7a6e9';
-  const url = `https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${KEY}`;
+const API_KEY = '34a3f3c9cce4f4b9cc46f3708ad7a6e9';
+const BASE_URL = 'https://api.themoviedb.org/3';
 
+axios.defaults.baseURL = BASE_URL;
+axios.defaults.params = {
+  api_key: API_KEY,
+  language: 'en-US',
+};
+axios.defaults.headers = 'Access-Control-Allow-Origin';
+
+export const fetchTrends = async () => {
   try {
-    const response = await axios.get(url);
-    return response;
+    const { data } = await axios.get('/trending/movie/day');
+    return data.results;
   } catch (error) {
-    window.alert(error);
+    window.alert('fetch trend');
   }
 };
 
-export default fetchData;
+export const fetchData = async query => {
+  try {
+    const { data } = await axios.get(`/search/movie?query=${query}`);
+
+    return data.results;
+  } catch (error) {
+    window.alert(error);
+    return [];
+  }
+};
