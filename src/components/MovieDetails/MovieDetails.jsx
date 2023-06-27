@@ -5,6 +5,7 @@ import { fetchMovieImage } from 'api/themoviedb';
 import { useParams } from 'react-router-dom';
 import DetailsEl from 'components/DetailsEl/DetailsEl';
 import css from './MovieDetails.module.css';
+import AdditionalInfo from 'components/AdditionalInfo/AdditionalInfo';
 
 const MovieDeatails = () => {
   const { moviesId } = useParams();
@@ -70,6 +71,9 @@ const MovieDeatails = () => {
           />
           <DetailsEl title={'Genres'} text={genrsEls} />
         </div>
+      </div>
+      <div>
+        <AdditionalInfo />
       </div>
     </>
   );
