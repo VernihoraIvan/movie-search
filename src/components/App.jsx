@@ -14,11 +14,10 @@ export const App = () => {
       <div>im App</div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<Movies />}>
-          <Route path="get-movie-details/:moviesId" element={<MovieDeatails />}>
-            <Route path="cast" element={<Cast />} />
-            <Route path="review" element={<Review />} />
-          </Route>
+        <Route path="/movies" element={<Movies />}></Route>
+        <Route path="get-movie-details/:moviesId" element={<MovieDeatails />}>
+          <Route path="cast" element={<Cast />} />
+          <Route path="review" element={<Review />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

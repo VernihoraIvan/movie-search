@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import DetailsEl from 'components/DetailsEl/DetailsEl';
 import css from './MovieDetails.module.css';
 import AdditionalInfo from 'components/AdditionalInfo/AdditionalInfo';
+import { Outlet } from 'react-router-dom';
 
 const MovieDeatails = () => {
   const { moviesId } = useParams();
@@ -74,6 +75,7 @@ const MovieDeatails = () => {
       </div>
       <div>
         <AdditionalInfo />
+        <Outlet />
       </div>
     </>
   );
