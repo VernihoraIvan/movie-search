@@ -1,0 +1,15 @@
+.img {
+  width: 300px;
+}
+
+.container {
+  margin-left: 40px;
+  margin-top: 40px;
+  display: flex;
+  gap: 20px;
+}
+
+.ul {
+  display: flex;
+  gap: 20px;
+}

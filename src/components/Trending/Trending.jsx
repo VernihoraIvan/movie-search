@@ -1,11 +1,12 @@
 // import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import css from './Trending.module.css';
 
 const Trending = ({ movies }) => {
   return (
-    <ul>
+    <ul className={css.trendingList}>
       {movies.map(({ id, title }) => (
-        <li key={id}>
+        <li className={css.trendingEl} key={id}>
           <Link to={`get-movie-details/${id}`}>{title}</Link>
         </li>
       ))}

@@ -1,0 +1,10 @@
+.trendingEl {
+  text-decoration: none;
+}
+.trendingList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 30px;
+  margin-left: 30px;
+}
