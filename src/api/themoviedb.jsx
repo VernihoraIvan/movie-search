@@ -54,3 +54,12 @@ export const fetchMovieImage = async id => {
     return [];
   }
 };
+
+export const fetchMovieReview = async id => {
+  try {
+    const { data } = await axios.get(`/movie/${id}/reviews`);
+    return data;
+  } catch (error) {
+    window.alert(error);
+  }
+};

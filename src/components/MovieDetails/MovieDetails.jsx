@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Loader } from 'components/Loader/Loader';
 import { fetchMovieDetails } from 'api/themoviedb';
 import { fetchMovieImage } from 'api/themoviedb';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import DetailsEl from 'components/DetailsEl/DetailsEl';
 import css from './MovieDetails.module.css';
 import AdditionalInfo from 'components/AdditionalInfo/AdditionalInfo';
@@ -22,8 +22,6 @@ const MovieDeatails = () => {
         const dataImage = await fetchMovieImage(data.id);
         setMovieDetails(data);
         setMovieImage(dataImage);
-        console.log(data);
-        console.log(dataImage);
       } catch (error) {
         console.log('error', error);
         setMovieDetails([]);
@@ -34,7 +32,6 @@ const MovieDeatails = () => {
     getMovieDetails();
   }, [moviesId]);
 
-  console.log(movieImage);
   if (isLoading) {
     return <Loader />;
   }
@@ -74,7 +71,15 @@ const MovieDeatails = () => {
         </div>
       </div>
       <div>
-        <AdditionalInfo />
+        <h2>Additional information</h2>
+        <ul>
+          <li>
+            <Link to="cast">Cast</Link>
+          </li>
+          <li>
+            <Link to="review">Review</Link>
+          </li>
+        </ul>
         <Outlet />
       </div>
     </>

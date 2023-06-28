@@ -5,17 +5,17 @@ import Movies from 'pages/Movies/Movies';
 import NotFound from 'pages/NotFound/NotFound';
 import MovieDeatails from './MovieDetails/MovieDetails';
 import Cast from './Cast/Cast';
-import Review from './Review/Review';
+import Review from './ReviewComp/ReviewComp';
+import AdditionalInfo from './AdditionalInfo/AdditionalInfo';
 
 export const App = () => {
   return (
     <div>
       <Header />
-      <div>im App</div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<Movies />}></Route>
-        <Route path="get-movie-details/:moviesId" element={<MovieDeatails />}>
+        <Route path="/movies" element={<Movies />} />
+        <Route path="movies/:moviesId/" element={<MovieDeatails />}>
           <Route path="cast" element={<Cast />} />
           <Route path="review" element={<Review />} />
         </Route>

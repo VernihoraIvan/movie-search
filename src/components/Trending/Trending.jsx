@@ -7,7 +7,7 @@ const Trending = ({ movies }) => {
     <ul className={css.trendingList}>
       {movies.map(({ id, title }) => (
         <li className={css.trendingEl} key={id}>
-          <Link to={`get-movie-details/${id}`}>{title}</Link>
+          <Link to={`movies/${id}`}>{title}</Link>
         </li>
       ))}
     </ul>

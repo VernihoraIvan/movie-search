@@ -1,4 +1,3 @@
-import { Input } from 'components/Input/Input';
 import Trending from 'components/Trending/Trending';
 import { useState, useEffect } from 'react';
 import { fetchTrends } from 'api/themoviedb';
@@ -35,7 +34,6 @@ const Home = () => {
 
   return (
     <>
-      <Input onSubmit={handleSubmit} movies={movies} />;
       <Trending movies={movies} />
     </>
   );
