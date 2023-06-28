@@ -80,7 +80,7 @@ const MovieDeatails = () => {
             <Link to="review">Review</Link>
           </li>
         </ul>
-        <Outlet />
+        <Outlet moviesId={moviesId} />
       </div>
     </>
   );

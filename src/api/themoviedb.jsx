@@ -63,3 +63,13 @@ export const fetchMovieReview = async id => {
     window.alert(error);
   }
 };
+
+export const fetchMovieCast = async id => {
+  try {
+    const { data } = await axios.get(`movie/${id}/credits`);
+    console.log(data.cast);
+    return data.cast;
+  } catch (error) {
+    window.alert(error);
+  }
+};
