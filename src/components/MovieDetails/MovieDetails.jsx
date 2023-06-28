@@ -5,7 +5,6 @@ import { fetchMovieImage } from 'api/themoviedb';
 import { Link, useParams } from 'react-router-dom';
 import DetailsEl from 'components/DetailsEl/DetailsEl';
 import css from './MovieDetails.module.css';
-import AdditionalInfo from 'components/AdditionalInfo/AdditionalInfo';
 import { Outlet } from 'react-router-dom';
 
 const MovieDeatails = () => {
@@ -70,7 +69,7 @@ const MovieDeatails = () => {
           <DetailsEl title={'Genres'} text={genrsEls} />
         </div>
       </div>
-      <div>
+      <div className={css.add_info}>
         <h2>Additional information</h2>
         <ul>
           <li>
@@ -80,8 +79,8 @@ const MovieDeatails = () => {
             <Link to="review">Review</Link>
           </li>
         </ul>
-        <Outlet moviesId={moviesId} />
       </div>
+      <Outlet moviesId={moviesId} />
     </>
   );
 };

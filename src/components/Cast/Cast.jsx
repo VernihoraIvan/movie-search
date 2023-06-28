@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieCast } from 'api/themoviedb';
-import DetailsEl from 'components/DetailsEl/DetailsEl';
 import { Loader } from 'components/Loader/Loader';
-
+import css from './Cast.module.css';
 const unknownPhoto = `https://assets.mycast.io/actor_images/actor-an-unknown-actor-465215_large.jpg?1656098263`;
-let photo = '';
+
 const Cast = () => {
   const [cast, setCast] = useState([]);
   const { moviesId } = useParams();
@@ -39,11 +38,12 @@ const Cast = () => {
   }
 
   return (
-    <ul>
+    <ul className={css.list}>
       {cast.map(element => (
-        <li key={element.credit_id}>
-          <h3>{element.name}</h3>
+        <li className={css.list_item} key={element.credit_id}>
+          <h3 className={css.actors_name}>{element.name}</h3>
           <img
+            className={css.photo}
             src={
               element.profile_path
                 ? `https://image.tmdb.org/t/p/w500/${element.profile_path}`
@@ -51,7 +51,7 @@ const Cast = () => {
             }
             alt={element.name}
           />
-          <p>{element.character}</p>
+          <p className={css.character}>{element.character}</p>
         </li>
       ))}
       ;

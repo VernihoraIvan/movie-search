@@ -13,3 +13,9 @@
   display: flex;
   gap: 20px;
 }
+
+.add_info {
+  margin-top: 20px;
+  padding: 30px;
+  border: 1px solid black;
+}

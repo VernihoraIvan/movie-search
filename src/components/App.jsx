@@ -6,7 +6,6 @@ import NotFound from 'pages/NotFound/NotFound';
 import MovieDeatails from './MovieDetails/MovieDetails';
 import Cast from './Cast/Cast';
 import Review from './ReviewComp/ReviewComp';
-import AdditionalInfo from './AdditionalInfo/AdditionalInfo';
 
 export const App = () => {
   return (
