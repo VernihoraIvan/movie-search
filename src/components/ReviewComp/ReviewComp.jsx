@@ -32,14 +32,21 @@ const Review = () => {
   if (!review) {
     return (
       <div>
-        <Loader />
+        <DetailsEl
+          title={'Review'}
+          text={"We don't have any reviews for this movie."}
+        />
       </div>
     );
   }
 
   return (
     <div>
-      <DetailsEl title={'Review'} text={review.content} />
+      <DetailsEl
+        title={'Review'}
+        text={review.content}
+        author={review.author}
+      />
     </div>
   );
 };

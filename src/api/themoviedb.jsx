@@ -26,7 +26,7 @@ export const fetchTrends = async () => {
 
 export const fetchData = async query => {
   try {
-    const { data } = await axios.get(`/search/movie?query=${query}`);
+    const { data } = await axios.get(`/search/movie?${API_KEY}query=${query}`);
 
     return data.results;
   } catch (error) {
@@ -69,6 +69,16 @@ export const fetchMovieCast = async id => {
     const { data } = await axios.get(`movie/${id}/credits`);
     console.log(data.cast);
     return data.cast;
+  } catch (error) {
+    window.alert(error);
+  }
+};
+
+export const fetchMovieByQuery = async query => {
+  try {
+    const { data } = await axios.get(`/search/movie?${query}`);
+    console.log(data.results);
+    return data.results;
   } catch (error) {
     window.alert(error);
   }

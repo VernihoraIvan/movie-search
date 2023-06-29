@@ -6,6 +6,7 @@ import { Link, useParams } from 'react-router-dom';
 import DetailsEl from 'components/DetailsEl/DetailsEl';
 import css from './MovieDetails.module.css';
 import { Outlet } from 'react-router-dom';
+import GoBack from 'components/GoBack/GoBack';
 
 const MovieDeatails = () => {
   const { moviesId } = useParams();
@@ -52,7 +53,8 @@ const MovieDeatails = () => {
   );
 
   return (
-    <>
+    <div className={css.section}>
+      <GoBack className={css.button} />
       <div className={css.container}>
         <img
           className={css.img}
@@ -81,7 +83,7 @@ const MovieDeatails = () => {
         </ul>
       </div>
       <Outlet moviesId={moviesId} />
-    </>
+    </div>
   );
 };
 
