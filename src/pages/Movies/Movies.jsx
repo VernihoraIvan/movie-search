@@ -24,7 +24,6 @@ const Movies = () => {
         searchParams.set('query', query);
         navigate(`/movies?${searchParams.toString()}`);
         setIsLoading(false);
-        console.log(searchParams.toString());
       } catch (error) {
         console.log('error', error);
         setSearchQuery([]);
@@ -50,7 +49,6 @@ const Movies = () => {
 
   useEffect(() => {
     const query = searchParams.get('query');
-    console.log(query);
     if (query) {
       handleSearchSubmit(query);
     }

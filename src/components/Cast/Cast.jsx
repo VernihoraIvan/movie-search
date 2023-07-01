@@ -10,7 +10,6 @@ const Cast = () => {
   const [cast, setCast] = useState([]);
   const { moviesId } = useParams();
   const [isLoading, setIsLoading] = useState(false);
-  console.log(cast);
   useEffect(() => {
     setIsLoading(true);
     const getMovieCast = async () => {
