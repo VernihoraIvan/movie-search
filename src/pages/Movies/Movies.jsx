@@ -2,51 +2,97 @@ import { Outlet } from 'react-router-dom';
 import css from './Movies.module.css';
 import { Loader } from 'components/Loader/Loader';
 import { fetchMovieByQuery } from 'api/themoviedb';
+import { useSearchParams, useNavigate, useParams } from 'react-router-dom';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 const Movies = () => {
-  const [query, setQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const { movieId } = useParams();
 
-  useEffect(() => {
-    setIsLoading(true);
-    const getSearchResult = async () => {
+  const [searchParams] = useSearchParams();
+
+  const navigate = useNavigate();
+
+  const handleSearchSubmit = useCallback(
+    async query => {
       try {
-        const data = await fetchMovieByQuery(query);
-        setQuery(data);
+        setIsLoading(true);
+        const results = await fetchMovieByQuery(query);
+        setSearchQuery(results);
+        searchParams.set('query', query);
+        navigate(`/movies?${searchParams.toString()}`);
+        setIsLoading(false);
       } catch (error) {
         console.log('error', error);
-      } finally {
-        setIsLoading(false);
+        setSearchQuery([]);
+      }
+    },
+    [navigate, searchParams]
+  );
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      if (!movieId) return;
+      try {
+        const results = await fetchMovieByQuery(movieId);
+        setSearchQuery(results);
+      } catch (error) {
+        console.log('error', error);
+        setSearchQuery([]);
       }
     };
-    getSearchResult();
-  }, []);
 
-  const handleChange = event => {
-    event.preventDefault();
-    setQuery(event.target.value);
-    if (query === '') {
-      return;
+    fetchMovies();
+  }, [movieId]);
+
+  useEffect(() => {
+    const query = searchParams.get('query');
+
+    if (query) {
+      handleSearchSubmit(query);
     }
-    if (query === event.target.value) {
-      return;
-    }
-  };
+  }, [searchParams, handleSearchSubmit]);
+
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   const getSearchResult = async () => {
+  //     try {
+  //       const data = await fetchMovieByQuery(query);
+  //       setSearchQuery(data);
+  //     } catch (error) {
+  //       console.log('error', error);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   };
+  //   getSearchResult();
+  // }, []);
+
+  // const handleChange = event => {
+  //   event.preventDefault();
+  //   setSearchQuery(event.target.value);
+  //   if (searchQuery === '') {
+  //     return;
+  //   }
+  //   if (searchQuery === event.target.value) {
+  //     return;
+  //   }
+  // };
 
   if (isLoading) {
     return <Loader />;
   }
   return (
     <>
-      <form className={css.form}>
+      <form className={css.form} onSubmit={handleSearchSubmit}>
         <button className={css.button} type="submit">
           <span className={css.label}>Search</span>
         </button>
         <input
           className={css.input}
-          // value={query}
+          value={searchQuery}
           onChange={handleChange}
           type="text"
           autoComplete="off"
