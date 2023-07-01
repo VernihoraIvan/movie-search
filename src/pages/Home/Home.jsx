@@ -4,7 +4,6 @@ import { fetchTrends } from 'api/themoviedb';
 import { Loader } from 'components/Loader/Loader';
 
 const Home = () => {
-  const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -23,10 +22,6 @@ const Home = () => {
     };
     getMovies();
   }, []);
-
-  const handleSubmit = input => {
-    setQuery(input);
-  };
 
   if (isLoading) {
     return <Loader />;

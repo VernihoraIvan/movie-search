@@ -77,7 +77,6 @@ export const fetchMovieCast = async id => {
 export const fetchMovieByQuery = async query => {
   try {
     const { data } = await axios.get(`/search/movie?query=${query}`);
-    console.log(data.results);
     return data.results;
   } catch (error) {
     window.alert(error);

@@ -5,6 +5,8 @@ import { fetchMovieByQuery } from 'api/themoviedb';
 import { useSearchParams, useNavigate, useParams } from 'react-router-dom';
 
 import { useState, useEffect, useCallback } from 'react';
+import Searchbar from './SearchBar/SearchBar';
+import MoviesList from 'components/MoviesList/MoviesList';
 
 const Movies = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -24,6 +26,7 @@ const Movies = () => {
         searchParams.set('query', query);
         navigate(`/movies?${searchParams.toString()}`);
         setIsLoading(false);
+        console.log(searchParams.toString());
       } catch (error) {
         console.log('error', error);
         setSearchQuery([]);
@@ -49,7 +52,7 @@ const Movies = () => {
 
   useEffect(() => {
     const query = searchParams.get('query');
-
+    console.log(query);
     if (query) {
       handleSearchSubmit(query);
     }
@@ -86,20 +89,22 @@ const Movies = () => {
   }
   return (
     <>
-      <form className={css.form} onSubmit={handleSearchSubmit}>
+      {/* <form className={css.form} onSubmit={handleSearchSubmit}>
         <button className={css.button} type="submit">
           <span className={css.label}>Search</span>
         </button>
         <input
           className={css.input}
           value={searchQuery}
-          onChange={handleChange}
+          // onChange={handleChange}
           type="text"
           autoComplete="off"
           autoFocus
           placeholder="Search images and photos"
         />
-      </form>
+      </form> */}
+      <Searchbar onSubmit={handleSearchSubmit} />
+      <MoviesList list={searchQuery} />
     </>
   );
 };

@@ -44,13 +44,13 @@ const MovieDeatails = () => {
     );
   }
 
-  const genrsEls = (
-    <ul className={css.ul}>
-      {movieDetails.genres.map(genre => (
-        <li key={genre.id}>{genre.name}</li>
-      ))}
-    </ul>
-  );
+  //   const genrsEls = (
+  //     <ul className={css.ul}>
+  //       {movieDetails.genres.map(genre => (
+  //         <li key={genre.id}>{genre.name}</li>
+  //       ))}
+  //     </ul>
+  //   );
 
   return (
     <div className={css.section}>
@@ -68,7 +68,7 @@ const MovieDeatails = () => {
             title={movieDetails.title}
             text={`User score: ${movieDetails.vote_average * 10} % `}
           />
-          <DetailsEl title={'Genres'} text={genrsEls} />
+          {/* <DetailsEl title={'Genres'} text={genrsEls} /> */}
         </div>
       </div>
       <div className={css.add_info}>
