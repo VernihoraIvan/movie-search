@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Loader } from 'components/Loader/Loader';
 import { fetchMovieDetails } from 'api/themoviedb';
 import { fetchMovieImage } from 'api/themoviedb';
@@ -7,12 +7,15 @@ import DetailsEl from 'components/DetailsEl/DetailsEl';
 import css from './MovieDetails.module.css';
 import { Outlet } from 'react-router-dom';
 import GoBack from 'components/GoBack/GoBack';
+import { useLocation } from 'react-router-dom';
 
 const MovieDeatails = () => {
   const { moviesId } = useParams();
   const [movieDetails, setMovieDetails] = useState('');
   const [movieImage, setMovieImage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const location = useLocation();
+  const locationRef = useRef(location);
 
   useEffect(() => {
     setIsLoading(true);
@@ -44,17 +47,17 @@ const MovieDeatails = () => {
     );
   }
 
-  //   const genrsEls = (
-  //     <ul className={css.ul}>
-  //       {movieDetails.genres.map(genre => (
-  //         <li key={genre.id}>{genre.name}</li>
-  //       ))}
-  //     </ul>
-  //   );
-
+  const genrsEls = (
+    <ul className={css.ul}>
+      {movieDetails.genres.map(genre => (
+        <li key={genre.id}>{genre.name}</li>
+      ))}
+    </ul>
+  );
+  const backLinkHref = location.state?.from ?? '/movies';
   return (
     <div className={css.section}>
-      <GoBack className={css.button} />
+      <GoBack className={css.button} to={backLinkHref} />
       <div className={css.container}>
         <img
           className={css.img}
@@ -68,7 +71,7 @@ const MovieDeatails = () => {
             title={movieDetails.title}
             text={`User score: ${movieDetails.vote_average * 10} % `}
           />
-          {/* <DetailsEl title={'Genres'} text={genrsEls} /> */}
+          <DetailsEl title={'Genres'} text={genrsEls} />
         </div>
       </div>
       <div className={css.add_info}>

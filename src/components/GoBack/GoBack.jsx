@@ -1,10 +1,19 @@
+import { Link, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 import css from './GoBack.module.css';
 
-const GoBack = () => {
+const GoBack = ({ to }) => {
   return (
-    <button>
-      <p className={css.p}> ← Go back</p>
-    </button>
+    <Link
+      to={to} 
+    >
+      ← Go back
+    </Link>
+
+    //  <button to={to} onClick={() => navigate(to.state?.from ?? '/')}>
+    //   ← Goo back
+    // </button> 
   );
 };
 

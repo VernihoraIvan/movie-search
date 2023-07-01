@@ -1,10 +1,5 @@
 import axios from 'axios';
 
-// export const getUsers = async () => {
-//   const { data } = await axios.get(url);
-//   return data;
-// };
-
 const API_KEY = '34a3f3c9cce4f4b9cc46f3708ad7a6e9';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
@@ -67,7 +62,6 @@ export const fetchMovieReview = async id => {
 export const fetchMovieCast = async id => {
   try {
     const { data } = await axios.get(`movie/${id}/credits`);
-    console.log(data.cast);
     return data.cast;
   } catch (error) {
     window.alert(error);
