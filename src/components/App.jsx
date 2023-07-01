@@ -2,6 +2,7 @@
 // import Home from 'pages/Home/Home';
 // import Header from './Header/Header';
 // import Movies from 'pages/Movies/Movies';
+// import NotFound from 'pages/NotFound/NotFound';
 // import MovieDeatails from './MovieDetails/MovieDetails';
 // import Cast from './Cast/Cast';
 // import Review from './ReviewComp/ReviewComp';
@@ -15,6 +16,7 @@ const MovieDetails = lazy(() => import('./MovieDetails/MovieDetails'));
 const Header = lazy(() => import('./Header/Header'));
 const Cast = lazy(() => import('./Cast/Cast'));
 const ReviewComp = lazy(() => import('./ReviewComp/ReviewComp'));
+const NotFound = lazy(() => import('pages/NotFound/NotFound'));
 
 export const App = () => {
   return (
@@ -27,7 +29,7 @@ export const App = () => {
           <Route path="cast" element={<Cast />} />
           <Route path="review" element={<ReviewComp />} />
         </Route>
-        <Route path="*" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
