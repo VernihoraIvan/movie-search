@@ -1,11 +1,9 @@
-import { Outlet } from 'react-router-dom';
-import css from './Movies.module.css';
 import { Loader } from 'components/Loader/Loader';
 import { fetchMovieByQuery } from 'api/themoviedb';
 import { useSearchParams, useNavigate, useParams } from 'react-router-dom';
 
 import { useState, useEffect, useCallback } from 'react';
-import Searchbar from './SearchBar/SearchBar';
+import Searchbar from 'components/SearchBar/SearchBar';
 import MoviesList from 'components/MoviesList/MoviesList';
 
 const Movies = () => {
@@ -57,32 +55,6 @@ const Movies = () => {
       handleSearchSubmit(query);
     }
   }, [searchParams, handleSearchSubmit]);
-
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   const getSearchResult = async () => {
-  //     try {
-  //       const data = await fetchMovieByQuery(query);
-  //       setSearchQuery(data);
-  //     } catch (error) {
-  //       console.log('error', error);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   };
-  //   getSearchResult();
-  // }, []);
-
-  // const handleChange = event => {
-  //   event.preventDefault();
-  //   setSearchQuery(event.target.value);
-  //   if (searchQuery === '') {
-  //     return;
-  //   }
-  //   if (searchQuery === event.target.value) {
-  //     return;
-  //   }
-  // };
 
   if (isLoading) {
     return <Loader />;

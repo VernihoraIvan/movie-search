@@ -1,6 +1,7 @@
 // import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import css from './Trending.module.css';
+import PropTypes from 'prop-types';
 
 const Trending = ({ movies }) => {
   return (
@@ -15,3 +16,7 @@ const Trending = ({ movies }) => {
 };
 
 export default Trending;
+
+Trending.propTypes = {
+  list: PropTypes.string,
+};

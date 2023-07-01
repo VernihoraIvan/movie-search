@@ -3,13 +3,14 @@ import { useParams } from 'react-router-dom';
 import { fetchMovieCast } from 'api/themoviedb';
 import { Loader } from 'components/Loader/Loader';
 import css from './Cast.module.css';
+import DetailsEl from 'components/DetailsEl/DetailsEl';
 const unknownPhoto = `https://assets.mycast.io/actor_images/actor-an-unknown-actor-465215_large.jpg?1656098263`;
 
 const Cast = () => {
   const [cast, setCast] = useState([]);
   const { moviesId } = useParams();
   const [isLoading, setIsLoading] = useState(false);
-
+  console.log(cast);
   useEffect(() => {
     setIsLoading(true);
     const getMovieCast = async () => {
@@ -29,10 +30,14 @@ const Cast = () => {
   if (isLoading) {
     return <Loader />;
   }
-  if (!cast) {
+
+  if (cast.length === 0) {
     return (
       <div>
-        <Loader />
+        <DetailsEl
+          title={'Cast'}
+          text={"We don't have any casts for this movie."}
+        />
       </div>
     );
   }

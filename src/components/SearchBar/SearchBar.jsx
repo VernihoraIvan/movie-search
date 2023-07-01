@@ -20,18 +20,6 @@ const Searchbar = ({ onSubmit }) => {
 
   return (
     <div>
-      {/* <ToastContainer />
-      <SearchForm onSubmit={handleSearchSubmit}>
-        <SearchInput
-          type="text"
-          autoComplete="off"
-          autoFocus
-          placeholder="Search movies"
-          value={query}
-          onChange={handleInputChange}
-        />
-        <SearchButton type="submit">Search</SearchButton>
-      </SearchForm> */}
       <form className={css.form} onSubmit={handleSearchSubmit}>
         <button className={css.button} type="submit">
           <span className={css.label}>Search</span>
