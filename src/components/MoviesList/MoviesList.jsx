@@ -22,11 +22,11 @@ const MoviesList = ({ list }) => {
 
 export default MoviesList;
 
-MoviesList.propTypes = {
-  list: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-    })
-  ),
-};
+// MoviesList.propTypes = {
+//   list: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.number.isRequired,
+//       title: PropTypes.string.isRequired,
+//     })
+//   ),
+// };
