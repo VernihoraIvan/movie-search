@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { Loader } from 'components/Loader/Loader';
 import { fetchMovieDetails } from 'api/themoviedb';
 import { Link, useParams } from 'react-router-dom';
@@ -87,6 +87,13 @@ const MovieDeatails = () => {
           </li>
         </ul>
       </div>
+      <Suspense
+        fallback={
+          <div>
+            <Loader />
+          </div>
+        }
+      ></Suspense>
       <Outlet moviesId={moviesId} />
     </div>
   );
