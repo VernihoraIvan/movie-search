@@ -87,13 +87,13 @@ const MovieDeatails = () => {
           </li>
         </ul>
       </div>
-      <Suspense
+      {/* <Suspense
         fallback={
           <div>
             <Loader />
           </div>
         }
-      ></Suspense>
+      ></Suspense> */}
       <Outlet moviesId={moviesId} />
     </div>
   );

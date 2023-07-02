@@ -8,7 +8,7 @@
 // import Review from './ReviewComp/ReviewComp';
 
 import { Routes, Route } from 'react-router-dom';
-import { lazy } from 'react';
+import { lazy, Suspense } from 'react';
 
 const Home = lazy(() => import('pages/Home/Home'));
 const Movies = lazy(() => import('pages/Movies/Movies'));
@@ -22,15 +22,17 @@ export const App = () => {
   return (
     <div>
       <Header />
-      <Routes>
-        <Route path="/" index element={<Home />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="movies/:moviesId/" element={<MovieDetails />}>
-          <Route path="cast" element={<Cast />} />
-          <Route path="review" element={<ReviewComp />} />
-        </Route>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="/" index element={<Home />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="movies/:moviesId/" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="review" element={<ReviewComp />} />
+          </Route>
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </Suspense>
     </div>
   );
 };
