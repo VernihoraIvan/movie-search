@@ -7,7 +7,7 @@
 // import Cast from './Cast/Cast';
 // import Review from './ReviewComp/ReviewComp';
 
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 
 const Home = lazy(() => import('pages/Home/Home'));
@@ -30,7 +30,8 @@ export const App = () => {
             <Route path="cast" element={<Cast />} />
             <Route path="review" element={<ReviewComp />} />
           </Route>
-          <Route path="*" element={<Home />} />
+          {/* <Route path="*" element={<Home />} /> */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Suspense>
     </div>
