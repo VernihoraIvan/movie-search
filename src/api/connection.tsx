@@ -40,3 +40,13 @@ export const fetchMovieByQuery = async (query: string) => {
     window.alert(error);
   }
 };
+
+export const fetchMovieDetails = async (id: string) => {
+  try {
+    const { data } = await axios.get(`/movie/${id}`);
+    return data;
+  } catch (error) {
+    window.alert(error);
+    return [];
+  }
+};
