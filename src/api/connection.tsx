@@ -20,3 +20,23 @@ export const fetchMovies = async (): Promise<MovieData[]> => {
     return [];
   }
 };
+
+export const fetchData = async (query: string) => {
+  try {
+    const { data } = await axios.get(`/search/movie?${API_KEY}query=${query}`);
+
+    return data.results;
+  } catch (error) {
+    window.alert(error);
+    return [];
+  }
+};
+
+export const fetchMovieByQuery = async (query: string) => {
+  try {
+    const { data } = await axios.get(`/search/movie?query=${query}`);
+    return data.results;
+  } catch (error) {
+    window.alert(error);
+  }
+};
