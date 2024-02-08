@@ -3,9 +3,11 @@ import { useSearchParams, useNavigate, useParams } from "react-router-dom";
 
 import { useState, useCallback, useEffect } from "react";
 import { fetchMovieByQuery } from "@/api/connection";
+import MoviesList from "@/components/SearchList";
+import { MovieData } from "@/utilities/interfaces";
 
 const SearchPage = () => {
-  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [searchQuery, setSearchQuery] = useState<MovieData[]>([]);
   // const [isLoading, setIsLoading] = useState<boolean>(false);
   const { movieId } = useParams();
 
@@ -24,7 +26,7 @@ const SearchPage = () => {
         // setIsLoading(false);
       } catch (error) {
         console.log("error", error);
-        setSearchQuery("");
+        setSearchQuery([]);
       }
     },
     [navigate, searchParams]
@@ -38,7 +40,7 @@ const SearchPage = () => {
         setSearchQuery(results);
       } catch (error) {
         console.log("error", error);
-        setSearchQuery("");
+        setSearchQuery([]);
       }
     };
     fetchMovies();
@@ -54,6 +56,7 @@ const SearchPage = () => {
   return (
     <div>
       <Searchbar onSubmit={handleSearchSubmit} />
+      <MoviesList list={searchQuery} />
     </div>
   );
 };

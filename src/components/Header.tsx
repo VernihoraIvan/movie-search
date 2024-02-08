@@ -10,7 +10,7 @@ const Header = () => {
       </NavLink>
       <div className="flex gap-10">
         <NavLink to="/">Home</NavLink>
-        <NavLink to="/search">Search</NavLink>
+        <NavLink to="/movies">Search</NavLink>
       </div>
     </header>
   );
