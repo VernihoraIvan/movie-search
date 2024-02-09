@@ -1,13 +1,14 @@
 import { fetchMovieDetails } from "@/api/connection";
 import { MovieData } from "@/utilities/interfaces";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
+import ReturnButton from "./ReturnButton";
 
 const MovieDeatails = () => {
   const { moviesId } = useParams();
   const [movieDetails, setMovieDetails] = useState<MovieData[]>([]);
   // const [isLoading, setIsLoading] = useState<boolean>(false);
-  //   const location = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
     // setIsLoading(true);
@@ -26,7 +27,13 @@ const MovieDeatails = () => {
   }, [moviesId]);
 
   console.log(movieDetails);
-  return <div>Movie Details</div>;
+  const backLinkHref: string = location.state?.from ?? "/";
+
+  return (
+    <div>
+      <ReturnButton to={backLinkHref} />
+    </div>
+  );
 };
 
 export default MovieDeatails;
