@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface MovieListResponse {
   page: number;
   results: MovieData[];
@@ -21,4 +23,11 @@ export interface MovieData {
   video: boolean;
   vote_average: number;
   vote_count: number;
+}
+
+export interface DetailsElementProps {
+  title: string;
+  text: string;
+  author?: string;
+  children?: ReactNode;
 }
