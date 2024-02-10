@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import ReturnButton from "./ReturnButton";
 import DetailsElement from "./DetailsElement";
+import AdditionalInfoSection from "./AdditionalInfoSection";
 
 const unknownImage =
   "https://images.prewarcar.com/pics/r2w-1200x800-products/3240/Paris_movie_2008_503RB.jpg";
@@ -60,6 +61,7 @@ const MovieDeatails = () => {
           ))}
         </ul>
       </DetailsElement> */}
+      <AdditionalInfoSection />
     </div>
   );
 };
