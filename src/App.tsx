@@ -5,6 +5,7 @@ import TrendPage from "./pages/TrendPage";
 import SearchPage from "./pages/SearchPage";
 import MovieDeatails from "./components/MovieDetails";
 import Cast from "./components/Cast";
+import Review from "./components/Review";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/movies" element={<SearchPage />} />
         <Route path="movies/:moviesId/" element={<MovieDeatails />}>
           <Route path="cast" element={<Cast />} />
+          <Route path="review" element={<Review />} />
         </Route>
       </Route>
     </Routes>
