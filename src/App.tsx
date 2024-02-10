@@ -4,6 +4,7 @@ import Layout from "./components/Layout";
 import TrendPage from "./pages/TrendPage";
 import SearchPage from "./pages/SearchPage";
 import MovieDeatails from "./components/MovieDetails";
+import Cast from "./components/Cast";
 
 function App() {
   return (
@@ -11,7 +12,9 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<TrendPage />} />
         <Route path="/movies" element={<SearchPage />} />
-        <Route path="movies/:moviesId/" element={<MovieDeatails />}></Route>
+        <Route path="movies/:moviesId/" element={<MovieDeatails />}>
+          <Route path="cast" element={<Cast />} />
+        </Route>
       </Route>
     </Routes>
   );

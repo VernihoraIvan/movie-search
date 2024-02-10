@@ -1,7 +1,7 @@
 import { fetchMovieDetails } from "@/api/connection";
 import { MovieData } from "@/utilities/interfaces";
 import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { Outlet, useLocation, useParams } from "react-router-dom";
 import ReturnButton from "./ReturnButton";
 import DetailsElement from "./DetailsElement";
 import AdditionalInfoSection from "./AdditionalInfoSection";
@@ -31,7 +31,6 @@ const MovieDeatails = () => {
     getMovieDetails();
   }, [moviesId]);
 
-  console.log(movieDetails);
   const backLinkHref: string = location.state?.from ?? "/";
 
   if (!movieDetails) {
@@ -62,6 +61,7 @@ const MovieDeatails = () => {
         </ul>
       </DetailsElement> */}
       <AdditionalInfoSection />
+      <Outlet />
     </div>
   );
 };
