@@ -3,8 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import DetailsElement from "./DetailsElement";
 import { CastData } from "@/utilities/interfaces";
-
-const unknownPhoto = `https://assets.mycast.io/actor_images/actor-an-unknown-actor-465215_large.jpg?1656098263`;
+import { unknownPhoto } from "@/utilities/other";
 
 const Cast = () => {
   const [cast, setCast] = useState<CastData[]>([]);

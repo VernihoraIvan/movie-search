@@ -18,6 +18,9 @@ export default {
       },
       spacing: {
         7: "1.5rem",
+        cardW: "220px",
+        cardH: "400px",
+        80: "80%",
       },
       colors: {
         // bluesp: "#0ea5e9",
@@ -28,6 +31,7 @@ export default {
         // darkSecondText: "#c2c8cf",
         // iconDark: "#1e293b",
         darkbg: "#334d5c",
+        mainShadow: "10px 10px 25px -4px rgba(0,0,0,0.75)",
       },
     },
   },
