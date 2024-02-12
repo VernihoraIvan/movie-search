@@ -3,8 +3,8 @@ import { useSearchParams, useNavigate, useParams } from "react-router-dom";
 
 import { useState, useCallback, useEffect } from "react";
 import { fetchMovieByQuery } from "@/api/connection";
-import MoviesList from "@/components/SearchList";
 import { MovieData } from "@/utilities/interfaces";
+import TrendsList from "@/components/TrendsList";
 
 const SearchPage = () => {
   const [searchQuery, setSearchQuery] = useState<MovieData[]>([]);
@@ -56,7 +56,7 @@ const SearchPage = () => {
   return (
     <div>
       <Searchbar onSubmit={handleSearchSubmit} />
-      <MoviesList list={searchQuery} />
+      <TrendsList list={searchQuery} />
     </div>
   );
 };

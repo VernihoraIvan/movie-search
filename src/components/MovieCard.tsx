@@ -16,7 +16,7 @@ export interface MovieCardProps {
 const MovieCard = ({ movie }: MovieCardProps) => {
   console.log(movie);
   return (
-    <Link to={`movies/${movie.id}`}>
+    <Link className="flex h-full" to={`movies/${movie.id}`}>
       <div
         className=" rounded-lg shadow-xl col-span-1 row-span-1
       "
@@ -31,7 +31,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
           alt={movie.title}
         />
         <div className="px-2 h-24 flex flex-col justify-evenly	">
-          <h3 className="text-center">{movie.title}</h3>
+          <h3 className="text-center h-12 overflow-hidden	">{movie.title}</h3>
           <div className="flex justify-evenly items-center">
             <Star />
             <p>{movie.vote_average.toFixed(2)}</p>
