@@ -10,12 +10,17 @@ interface TrendsListProps {
 
 const TrendsList = ({ list }: TrendsListProps) => {
   const [movies, setMovies] = useState<MovieData[]>([]);
+  const [isFavorite, setIsFavorite] = useState<number[]>([]);
   // const [isLoading, setIsLoading] = useState(false);
+
+  const onFavoriteToggle = (value: number) => {
+    setIsFavorite((prev) => [...prev, value]);
+  };
+  console.log(isFavorite);
   useEffect(() => {
     const getMovies = async () => {
       try {
         const data = await fetchMovies();
-        console.log(data);
         setMovies(data);
       } catch (error) {
         console.log("error", error);
@@ -37,7 +42,11 @@ const TrendsList = ({ list }: TrendsListProps) => {
     >
       {dataArray.map((movie) => (
         <li key={movie.id}>
-          <MovieCard movie={movie} />
+          <MovieCard
+            isFavorite={isFavorite.includes(movie.id)}
+            onFavoriteToggle={onFavoriteToggle}
+            movie={movie}
+          />
         </li>
       ))}
     </ul>
