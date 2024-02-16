@@ -7,11 +7,12 @@ const moviesFavoriteSlice = createSlice({
   initialState: [] as number[],
   reducers: {
     favoriteMovies: (state, action) => {
-      // const newData: number = action.payload;
       if (!state.find((item) => item === action.payload)) {
         state.push(action.payload);
+        console.log("if");
       } else {
-        return state.filter((item) => item !== action.payload);
+        state.splice(state.indexOf(action.payload), 1);
+        console.log("else");
       }
     },
   },

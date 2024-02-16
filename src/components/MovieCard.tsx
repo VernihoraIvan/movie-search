@@ -31,7 +31,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
   const isActive = isFavorite.includes(movie.id);
 
   return (
-    <div>
+    <div className="relative">
       <Link className="flex h-full" to={`movies/${movie.id}`}>
         <div
           className=" rounded-lg shadow-xl col-span-1 row-span-1
@@ -56,7 +56,10 @@ const MovieCard = ({ movie }: MovieCardProps) => {
           </div>
         </div>
       </Link>
-      <div className="relative" onClick={() => onToggle(movie.id)}>
+      <div
+        className="relative bottom-10 left-16 pointer"
+        onClick={() => onToggle(movie.id)}
+      >
         {isActive ? <Favorite /> : <NotFavorite />}
       </div>
     </div>
