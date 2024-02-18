@@ -30,6 +30,7 @@ export default {
         // inputDark: "#3c4155",
         // darkSecondText: "#c2c8cf",
         // iconDark: "#1e293b",
+        grey: "#ababab",
         darkbg: "#334d5c",
         mainShadow: "10px 10px 25px -4px rgba(0,0,0,0.75)",
       },
