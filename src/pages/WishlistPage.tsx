@@ -1,9 +1,9 @@
-import TrendsList from "@/components/TrendsList";
+import Wishlist from "@/components/Wishlist";
 
 const WishlistPage = () => {
   return (
     <div>
-      <TrendsList />
+      <Wishlist />
     </div>
   );
 };

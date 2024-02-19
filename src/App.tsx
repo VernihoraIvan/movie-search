@@ -7,6 +7,7 @@ import MovieDeatails from "./components/MovieDetails";
 import Cast from "./components/Cast";
 import Review from "./components/Review";
 import TVSeriesPage from "./pages/TVSeriesPage";
+import WishlistPage from "./pages/WishlistPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route index element={<TrendPage />} />
         <Route path="/movies" element={<SearchPage />} />
         <Route path="/tv" element={<TVSeriesPage />} />
+        <Route path="/wishlist" element={<WishlistPage />} />
         <Route path="movies/:moviesId/" element={<MovieDeatails />}>
           <Route path="cast" element={<Cast />} />
           <Route path="review" element={<Review />} />

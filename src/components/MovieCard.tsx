@@ -24,7 +24,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
   // console.log(isFavorite);
   const isFavorite = useSelector(getfavoriteMovies);
   const dispatch = useDispatch();
-  console.log(movie);
+  // console.log(movie);
 
   const onToggle = (id: number) => {
     dispatch(favoriteMovies(id));
