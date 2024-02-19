@@ -1,4 +1,3 @@
-// import { MovieData } from "@/utilities/interfaces";
 import { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
 import { MovieData } from "@/utilities/interfaces";
@@ -10,29 +9,43 @@ interface TrendsListProps {
 
 const TrendsList = ({ list }: TrendsListProps) => {
   const [movies, setMovies] = useState<MovieData[]>([]);
-  // const [isFavorite, setIsFavorite] = useState<number[]>([]);
-  // const [isLoading, setIsLoading] = useState(false);
 
-  // const onFavoriteToggle = (value: number) => {
-  //   setIsFavorite((prev) => [...prev, value]);
-  // };
-  // console.log(isFavorite);
   useEffect(() => {
-    const getMovies = async () => {
-      try {
-        const data = await fetchMovies();
-        setMovies(data);
-      } catch (error) {
-        console.log("error", error);
-        if (list) {
-          setMovies(list);
-        } else {
-          setMovies([]);
+    if (list) {
+      const getMovies = async () => {
+        try {
+          const data = await fetchMovies();
+          setMovies(data);
+        } catch (error) {
+          console.log("error", error);
+          if (list) {
+            setMovies(list);
+          } else {
+            setMovies([]);
+          }
         }
-      }
-    };
-    getMovies();
+      };
+      getMovies();
+      console.log("if list");
+    } else {
+      const getTVs = async () => {
+        try {
+          const data = await fetchMovies();
+          setMovies(data);
+        } catch (error) {
+          console.log("error", error);
+          if (list) {
+            setMovies(list);
+          } else {
+            setMovies([]);
+          }
+        }
+      };
+      getTVs();
+      console.log("else list");
+    }
   }, [list]);
+  console.log(movies);
 
   const dataArray = list ? list : movies;
   return (
@@ -42,11 +55,7 @@ const TrendsList = ({ list }: TrendsListProps) => {
     >
       {dataArray.map((movie) => (
         <li key={movie.id}>
-          <MovieCard
-            // isFavorite={isFavorite.includes(movie.id)}
-            // onFavoriteToggle={onFavoriteToggle}
-            movie={movie}
-          />
+          <MovieCard movie={movie} />
         </li>
       ))}
     </ul>

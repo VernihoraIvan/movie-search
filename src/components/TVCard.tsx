@@ -1,4 +1,4 @@
-import { MovieData } from "@/utilities/interfaces";
+import { TVData } from "@/utilities/interfaces";
 import { unknownPhoto } from "@/utilities/other";
 import { Link } from "react-router-dom";
 // import Star from "@/assets/icons/Star.svg?react";
@@ -9,18 +9,18 @@ import BookmarkIcon from "@/assets/icons/Bookmark_unfav.svg?react";
 import { useDispatch, useSelector } from "react-redux";
 import { getfavoriteMovies } from "@/redux/favorite/selectors";
 import { favoriteMovies } from "@/redux/favorite/slice";
-// export interface MovieCardProps {
+// export interface TVCardProps {
 //   id: number;
 //   poster_path: string;
 //   title: string;
 // }
 
-export interface MovieCardProps {
-  movie: MovieData;
+export interface TVCardProps {
+  movie: TVData;
   // isFavorite: boolean;
 }
 
-const MovieCard = ({ movie }: MovieCardProps) => {
+const TVCard = ({ movie }: TVCardProps) => {
   // console.log(isFavorite);
   const isFavorite = useSelector(getfavoriteMovies);
   const dispatch = useDispatch();
@@ -52,14 +52,14 @@ const MovieCard = ({ movie }: MovieCardProps) => {
                 ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
                 : unknownPhoto
             }
-            alt={movie.title}
+            alt={movie.name}
           />
           <div className="px-2 h-24 flex flex-col justify-evenly	">
-            <h3 className="text-center h-12 overflow-hidden	">{movie.title}</h3>
+            <h3 className="text-center h-12 overflow-hidden	">{movie.name}</h3>
             <div className=" flex justify-evenly items-center">
               {/* <Star /> */}
               <p>{movie.vote_average.toFixed(2)}</p>
-              <p>{movie.release_date.slice(0, 4)}</p>
+              <p>{movie.first_air_date.slice(0, 4)}</p>
             </div>
           </div>
         </div>
@@ -68,4 +68,4 @@ const MovieCard = ({ movie }: MovieCardProps) => {
   );
 };
 
-export default MovieCard;
+export default TVCard;

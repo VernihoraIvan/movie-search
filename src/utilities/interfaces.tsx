@@ -7,6 +7,13 @@ export interface MovieListResponse {
   total_results: number;
 }
 
+export interface TVListResponse {
+  page: number;
+  results: TVData[];
+  total_pages: number;
+  total_results: number;
+}
+
 export interface MovieData {
   adult: boolean;
   backdrop_path: string;
@@ -24,6 +31,28 @@ export interface MovieData {
   vote_average: number;
   vote_count: number;
 }
+export interface TVData {
+  adult: boolean;
+  backdrop_path: string;
+  id: number;
+  name: string;
+  original_language: string;
+  original_name: string;
+  overview: string;
+  poster_path: string;
+  media_type: string;
+  genre_ids: number[];
+  popularity: number;
+  first_air_date: string;
+  vote_average: number;
+  vote_count: number;
+  origin_country: string[];
+}
+
+// export interface TVData extends Omit<TVRoughData, "name" | "first_air_date"> {
+//   title: string;
+//   release_date: string;
+// }
 
 export interface DetailsElementProps {
   title: string;
