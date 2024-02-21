@@ -7,6 +7,7 @@ const moviesFavoriteSlice = createSlice({
   initialState: [] as number[],
   reducers: {
     favoriteMovies: (state, action) => {
+      console.log(state);
       if (!state.find((item) => item === action.payload)) {
         state.push(action.payload);
         console.log("if");

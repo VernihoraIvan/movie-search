@@ -30,7 +30,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
     dispatch(favoriteMovies(id));
   };
 
-  const isActive = isFavorite.includes(movie.id);
+  const isActive = isFavorite?.includes(movie.id);
 
   return (
     <div className="relative">

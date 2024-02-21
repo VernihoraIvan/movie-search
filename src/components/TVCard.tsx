@@ -24,13 +24,13 @@ const TVCard = ({ movie }: TVCardProps) => {
   // console.log(isFavorite);
   const isFavorite = useSelector(getfavoriteMovies);
   const dispatch = useDispatch();
-  console.log(movie);
+  //   console.log(movie);
 
   const onToggle = (id: number) => {
     dispatch(favoriteMovies(id));
   };
 
-  const isActive = isFavorite.includes(movie.id);
+  const isActive = isFavorite?.includes(movie.id);
 
   return (
     <div className="relative">
