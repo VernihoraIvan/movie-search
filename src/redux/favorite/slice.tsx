@@ -1,19 +1,27 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-// const initialState = {};
+type FavoriteState = {
+  favoriteMovies: number[];
+};
+
+const initialState: FavoriteState = {
+  favoriteMovies: [],
+};
 
 const moviesFavoriteSlice = createSlice({
-  name: "favorite",
-  initialState: [] as number[],
+  name: "favoriteMovies",
+  initialState,
   reducers: {
-    favoriteMovies: (state, action) => {
+    favoriteMovies: (state, action: PayloadAction<number>) => {
       console.log(state);
-      if (!state.find((item) => item === action.payload)) {
-        state.push(action.payload);
-        console.log("if");
+      if (!state.favoriteMovies.includes(action.payload)) {
+        state.favoriteMovies.push(action.payload);
+        console.log(state);
       } else {
-        state.splice(state.indexOf(action.payload), 1);
-        console.log("else");
+        state.favoriteMovies = state.favoriteMovies.filter(
+          (item) => item !== action.payload
+        );
+        console.log(state);
       }
     },
   },

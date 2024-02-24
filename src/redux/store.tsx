@@ -20,14 +20,16 @@ import storage from "redux-persist/lib/storage";
 import { favoriteReducer } from "./favorite/slice";
 
 const persistConfig = {
-  key: "favorite",
+  key: "root",
   storage,
 };
 
 const persistedReducer = persistReducer(persistConfig, favoriteReducer);
 
 export const store = configureStore({
+  // reducer: { favoriteMovies: persistedReducer },
   reducer: persistedReducer,
+
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
