@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import Bookmark from "@/assets/icons/bookmark_fav.svg?react";
 import BookmarkIcon from "@/assets/icons/Bookmark_unfav.svg?react";
 import { useDispatch, useSelector } from "react-redux";
-import { getfavoriteMovies } from "@/redux/favorite/selectors";
+import { getfavoriteMovie } from "@/redux/favorite/selectors";
 import { favoriteMovie } from "@/redux/favorite/slice";
 // export interface TVCardProps {
 //   id: number;
@@ -22,7 +22,7 @@ export interface TVCardProps {
 
 const TVCard = ({ movie }: TVCardProps) => {
   // console.log(isFavorite);
-  const isFavorite = useSelector(getfavoriteMovies);
+  const isFavorite = useSelector(getfavoriteMovie);
   const dispatch = useDispatch();
   //   console.log(movie);
 

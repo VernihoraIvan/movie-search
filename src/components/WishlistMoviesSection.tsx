@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { MovieData } from "@/utilities/interfaces";
 import { fetchMovies } from "@/api/connection";
 import { useSelector } from "react-redux";
-import { getfavoriteMovies } from "@/redux/favorite/selectors";
+import { getfavoriteMovie } from "@/redux/favorite/selectors";
 import MovieCard from "./MovieCard";
 
 // interface WishlistProps {
@@ -13,10 +13,10 @@ import MovieCard from "./MovieCard";
 const WishlistMoviesSection = () => {
   const [movies, setMovies] = useState<MovieData[]>([]);
 
-  const favoriteMovies = useSelector(getfavoriteMovies);
+  const favoriteMovies = useSelector(getfavoriteMovie);
   console.log(favoriteMovies);
   useEffect(() => {
-    const getFavoriteMoviesData = async () => {
+    const getFavoriteMovieData = async () => {
       try {
         const data = await fetchMovies();
         console.log(data);
@@ -27,7 +27,7 @@ const WishlistMoviesSection = () => {
         setMovies([]);
       }
     };
-    getFavoriteMoviesData();
+    getFavoriteMovieData();
   }, [favoriteMovies]);
   console.log(movies);
 
