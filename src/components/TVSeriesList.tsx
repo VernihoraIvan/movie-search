@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-// import MovieCard from "./MovieCard";
 import { TVData } from "@/utilities/interfaces";
 import { fetchTVSeries } from "@/api/connection";
 import TVCard from "./TVCard";

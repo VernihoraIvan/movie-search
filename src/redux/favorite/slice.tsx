@@ -1,24 +1,34 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 type FavoriteState = {
-  favoriteMovies: number[];
+  favoriteMovie: number[];
+  // favoriteTVs: number[];
 };
 
 const initialState: FavoriteState = {
-  favoriteMovies: [],
+  favoriteMovie: [],
+  // favoriteTVs: [],
 };
 
-const moviesFavoriteSlice = createSlice({
-  name: "favoriteMovies",
+// type FavoriteTVsState = {
+//   favoriteTVs: number[];
+// };
+
+// const tvsInitialState: FavoriteTVsState = {
+//   favoriteTVs: [],
+// };
+
+const favoriteSlice = createSlice({
+  name: "favoriteMovie",
   initialState,
   reducers: {
-    favoriteMovies: (state, action: PayloadAction<number>) => {
+    favoriteMovie: (state, action: PayloadAction<number>) => {
       console.log(state);
-      if (!state.favoriteMovies.includes(action.payload)) {
-        state.favoriteMovies.push(action.payload);
+      if (!state.favoriteMovie.includes(action.payload)) {
+        state.favoriteMovie.push(action.payload);
         console.log(state);
       } else {
-        state.favoriteMovies = state.favoriteMovies.filter(
+        state.favoriteMovie = state.favoriteMovie.filter(
           (item) => item !== action.payload
         );
         console.log(state);
@@ -27,5 +37,28 @@ const moviesFavoriteSlice = createSlice({
   },
 });
 
-export const favoriteReducer = moviesFavoriteSlice.reducer;
-export const { favoriteMovies } = moviesFavoriteSlice.actions;
+// const tvsFavoriteSlice = createSlice({
+//   name: "favoriteTVs",
+//   initialState:
+// ,
+//   reducers: {
+//     favoriteTVs: (state, action: PayloadAction<number>) => {
+//       console.log(state);
+//       if (!state.favoriteTVs.includes(action.payload)) {
+//         state.favoriteTVs.push(action.payload);
+//         console.log(state);
+//       } else {
+//         state.favoriteTVs = state.favoriteTVs.filter(
+//           (item) => item !== action.payload
+//         );
+//         console.log(state);
+//       }
+//     },
+//   },
+// });
+
+export const favoriteReducer = favoriteSlice.reducer;
+export const { favoriteMovie } = favoriteSlice.actions;
+
+// export const favoriteTVsReducer = tvsFavoriteSlice.reducer;
+// export const { favoriteTVs } = tvsFavoriteSlice.actions;

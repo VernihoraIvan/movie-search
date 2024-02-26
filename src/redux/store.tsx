@@ -17,12 +17,20 @@ import {
 import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+// import { favoriteReducer, favoriteTVsReducer } from "./favorite/slice";
 import { favoriteReducer } from "./favorite/slice";
+// import rootReducer from "./favorite/rootReducer";
+// import { favoriteMoviesReducer, favoriteTVsReducer } from "./favorite/slice";
 
 const persistConfig = {
   key: "root",
   storage,
 };
+
+// const rootReducer = combineReducers({
+//   favoriteMovies: favoriteReducer,
+//   // favoriteTVs: favoriteTVsReducer,
+// });
 
 const persistedReducer = persistReducer(persistConfig, favoriteReducer);
 

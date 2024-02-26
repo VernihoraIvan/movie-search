@@ -7,11 +7,11 @@ import { persistor, store } from "./redux/store.tsx";
 import { PersistGate } from "redux-persist/integration/react";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <PersistGate loading={null} persistor={persistor}>
-    <Provider store={store}>
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
       <BrowserRouter basename="/">
         <App />
       </BrowserRouter>
-    </Provider>
-  </PersistGate>
+    </PersistGate>
+  </Provider>
 );

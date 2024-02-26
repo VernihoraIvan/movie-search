@@ -8,7 +8,7 @@ import Bookmark from "@/assets/icons/bookmark_fav.svg?react";
 import BookmarkIcon from "@/assets/icons/Bookmark_unfav.svg?react";
 import { useDispatch, useSelector } from "react-redux";
 import { getfavoriteMovies } from "@/redux/favorite/selectors";
-import { favoriteMovies } from "@/redux/favorite/slice";
+import { favoriteMovie } from "@/redux/favorite/slice";
 // export interface MovieCardProps {
 //   id: number;
 //   poster_path: string;
@@ -27,11 +27,11 @@ const MovieCard = ({ movie }: MovieCardProps) => {
   // console.log(movie);
 
   const onToggle = (id: number) => {
-    dispatch(favoriteMovies(id));
+    dispatch(favoriteMovie(id));
   };
 
-  console.log(isFavorite)
-  const isActive = isFavorite?.includes(movie.id);
+  console.log(isFavorite);
+  const isActive = isFavorite.includes(movie.id);
 
   return (
     <div className="relative">

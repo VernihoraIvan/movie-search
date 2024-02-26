@@ -10,13 +10,13 @@ import MovieCard from "./MovieCard";
 //   list?: MovieData[];
 // }
 
-const Wishlist = () => {
+const WishlistMoviesSection = () => {
   const [movies, setMovies] = useState<MovieData[]>([]);
 
   const favoriteMovies = useSelector(getfavoriteMovies);
   console.log(favoriteMovies);
   useEffect(() => {
-    const getFavoriteMovies = async () => {
+    const getFavoriteMoviesData = async () => {
       try {
         const data = await fetchMovies();
         console.log(data);
@@ -27,7 +27,7 @@ const Wishlist = () => {
         setMovies([]);
       }
     };
-    getFavoriteMovies();
+    getFavoriteMoviesData();
   }, [favoriteMovies]);
   console.log(movies);
 
@@ -46,4 +46,4 @@ const Wishlist = () => {
   );
 };
 
-export default Wishlist;
+export default WishlistMoviesSection;

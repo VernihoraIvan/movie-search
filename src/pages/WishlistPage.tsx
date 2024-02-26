@@ -1,9 +1,9 @@
-import Wishlist from "@/components/Wishlist";
+import WishlistMoviesSection from "@/components/WishlistMoviesSection";
 
 const WishlistPage = () => {
   return (
     <div>
-      <Wishlist />
+      <WishlistMoviesSection />
     </div>
   );
 };
