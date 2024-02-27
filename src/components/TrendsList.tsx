@@ -26,7 +26,6 @@ const TrendsList = ({ list }: TrendsListProps) => {
         }
       };
       getMovies();
-      console.log("if list");
     } else {
       const getTVs = async () => {
         try {
@@ -42,23 +41,24 @@ const TrendsList = ({ list }: TrendsListProps) => {
         }
       };
       getTVs();
-      console.log("else list");
     }
   }, [list]);
-  console.log(movies);
 
   const dataArray = list ? list : movies;
   return (
-    <ul
-      className=" m-auto	px-5	flex justify-center pt-5 grid grid-cols-5 grid-rows-5 gap-x-10 gap-y-10
+    <div>
+      <h2 className="text-3xl">Movies</h2>
+      <ul
+        className=" m-auto flex justify-center grid grid-cols-5 grid-rows-5 gap-x-10 gap-y-10
       "
-    >
-      {dataArray.map((movie) => (
-        <li key={movie.id}>
-          <MovieCard movie={movie} />
-        </li>
-      ))}
-    </ul>
+      >
+        {dataArray.map((movie) => (
+          <li key={movie.id}>
+            <MovieCard movie={movie} />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 

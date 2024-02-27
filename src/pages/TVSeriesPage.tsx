@@ -19,9 +19,8 @@ const TVSeriesPage = () => {
     };
     getTVs();
   }, []);
-  console.log(tv);
   return (
-    <div>
+    <div className="px-5 py-5">
       <TVSeriesList tv={tv} />
     </div>
   );

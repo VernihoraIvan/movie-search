@@ -21,10 +21,8 @@ export interface TVCardProps {
 }
 
 const TVCard = ({ movie }: TVCardProps) => {
-  // console.log(isFavorite);
   const TVs = useSelector(getfavoriteTVs);
   const dispatch = useDispatch();
-  console.log(TVs);
 
   const onToggle = (id: number) => {
     dispatch(toggleFavoriteTVs(id));

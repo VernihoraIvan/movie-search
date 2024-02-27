@@ -8,13 +8,10 @@ import { unknownPhoto } from "@/utilities/other";
 const Cast = () => {
   const [cast, setCast] = useState<CastData[]>([]);
   const { moviesId } = useParams();
-  console.log(moviesId);
   useEffect(() => {
-    // setIsLoading(true);
     const getMovieCast = async () => {
       try {
         const data = await fetchMovieCast(moviesId as string);
-        console.log(data);
         setCast(data);
         return data;
       } catch (error) {

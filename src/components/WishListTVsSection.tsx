@@ -1,23 +1,18 @@
 import { useEffect, useState } from "react";
-// import MovieCard from "./MovieCard";
-import { MovieData } from "@/utilities/interfaces";
-import { fetchMovies } from "@/api/connection";
+import { TVData } from "@/utilities/interfaces";
+import { fetchTVSeries } from "@/api/connection";
 import { useSelector } from "react-redux";
-import { getfavoriteMovie } from "@/redux/favorite/selectors";
-import MovieCard from "./MovieCard";
+import { getfavoriteTVs } from "@/redux/favorite/selectors";
+import TVCard from "./TVCard";
 
-// interface WishlistProps {
-//   list?: MovieData[];
-// }
+const WishlistTVsSection = () => {
+  const [movies, setMovies] = useState<TVData[]>([]);
 
-const WishlistMoviesSection = () => {
-  const [movies, setMovies] = useState<MovieData[]>([]);
-
-  const favoriteMovies = useSelector(getfavoriteMovie);
+  const favoriteMovies = useSelector(getfavoriteTVs);
   useEffect(() => {
     const getFavoriteMovieData = async () => {
       try {
-        const data = await fetchMovies();
+        const data = await fetchTVSeries();
         console.log(data);
 
         setMovies(data.filter((movie) => favoriteMovies.includes(movie.id)));
@@ -28,21 +23,21 @@ const WishlistMoviesSection = () => {
     };
     getFavoriteMovieData();
   }, [favoriteMovies]);
+  console.log(movies);
 
   if (movies.length === 0) {
     return null;
   }
-
   return (
     <div>
-      <h2 className="text-3xl">List of favorite movies</h2>
+      <h2 className="text-3xl">List of favorite TVs</h2>
       <ul
         className=" m-auto flex justify-center grid grid-cols-5 grid-rows-5 gap-x-10 gap-y-10
       "
       >
         {movies?.map((movie) => (
           <li key={movie.id}>
-            <MovieCard movie={movie} />
+            <TVCard movie={movie} />
           </li>
         ))}
       </ul>
@@ -50,4 +45,4 @@ const WishlistMoviesSection = () => {
   );
 };
 
-export default WishlistMoviesSection;
+export default WishlistTVsSection;

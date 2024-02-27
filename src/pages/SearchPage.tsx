@@ -12,7 +12,6 @@ const SearchPage = () => {
   const { movieId } = useParams();
 
   const [searchParams] = useSearchParams();
-  console.log(searchQuery);
   const navigate = useNavigate();
 
   const handleSearchSubmit = useCallback(
@@ -54,7 +53,7 @@ const SearchPage = () => {
   }, [searchParams, handleSearchSubmit]);
 
   return (
-    <div>
+    <div className="px-5 py-5">
       <Searchbar onSubmit={handleSearchSubmit} />
       <TrendsList list={searchQuery} />
     </div>
