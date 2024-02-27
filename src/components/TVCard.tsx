@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 import Bookmark from "@/assets/icons/bookmark_fav.svg?react";
 import BookmarkIcon from "@/assets/icons/Bookmark_unfav.svg?react";
 import { useDispatch, useSelector } from "react-redux";
-import { getfavoriteMovie } from "@/redux/favorite/selectors";
-import { favoriteMovie } from "@/redux/favorite/slice";
+import { getfavoriteTVs } from "@/redux/favorite/selectors";
+import { toggleFavoriteTVs } from "@/redux/favorite/slice";
 // export interface TVCardProps {
 //   id: number;
 //   poster_path: string;
@@ -22,15 +22,15 @@ export interface TVCardProps {
 
 const TVCard = ({ movie }: TVCardProps) => {
   // console.log(isFavorite);
-  const isFavorite = useSelector(getfavoriteMovie);
+  const TVs = useSelector(getfavoriteTVs);
   const dispatch = useDispatch();
-  //   console.log(movie);
+  console.log(TVs);
 
   const onToggle = (id: number) => {
-    dispatch(favoriteMovie(id));
+    dispatch(toggleFavoriteTVs(id));
   };
 
-  //   const isActive = isFavorite?.includes(movie.id);
+  const isActive = TVs?.includes(movie.id);
 
   return (
     <div className="relative">
@@ -38,7 +38,7 @@ const TVCard = ({ movie }: TVCardProps) => {
         className="relative left-2.5 top-10 cursor-pointer w-6 h-6"
         onClick={() => onToggle(movie.id)}
       >
-        {isFavorite?.includes(movie.id) ? <Bookmark /> : <BookmarkIcon />}
+        {isActive ? <Bookmark /> : <BookmarkIcon />}
       </div>
       <Link className="flex h-full" to={`movies/${movie.id}`}>
         <div
