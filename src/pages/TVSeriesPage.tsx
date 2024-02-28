@@ -1,6 +1,5 @@
 import { fetchTVSeries } from "@/api/connection";
 import TVSeriesList from "@/components/TVSeriesList";
-// import TrendsList from "@/components/TrendsList";
 import { TVData } from "@/utilities/interfaces";
 import { useEffect, useState } from "react";
 

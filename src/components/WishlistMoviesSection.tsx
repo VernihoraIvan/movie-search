@@ -6,10 +6,6 @@ import { useSelector } from "react-redux";
 import { getfavoriteMovie } from "@/redux/favorite/selectors";
 import MovieCard from "./MovieCard";
 
-// interface WishlistProps {
-//   list?: MovieData[];
-// }
-
 const WishlistMoviesSection = () => {
   const [movies, setMovies] = useState<MovieData[]>([]);
 

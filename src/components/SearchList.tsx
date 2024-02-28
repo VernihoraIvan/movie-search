@@ -1,27 +1,26 @@
-import { useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { MovieData } from "@/utilities/interfaces";
+import MovieCard from "./MovieCard";
 
 interface MoviesListProps {
   list: MovieData[];
 }
 
-const MoviesList = ({ list }: MoviesListProps) => {
-  const location = useLocation();
-
+const SearchList = ({ list }: MoviesListProps) => {
+  if (!list) {
+    return null;
+  }
   return (
-    <ul>
-      {list &&
-        list.map(({ id, title }) => (
-          <li key={id}>
-            <Link to={`${id}`} state={{ from: location }}>
-              {title}
-            </Link>
-          </li>
-        ))}
-      ;
+    <ul
+      className=" m-auto flex justify-center grid grid-cols-5 grid-rows-5 gap-x-10 gap-y-10
+      "
+    >
+      {list.map((movie) => (
+        <li key={movie.id}>
+          <MovieCard movie={movie} />
+        </li>
+      ))}
     </ul>
   );
 };
 
-export default MoviesList;
+export default SearchList;

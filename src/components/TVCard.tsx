@@ -1,23 +1,14 @@
 import { TVData } from "@/utilities/interfaces";
 import { unknownPhoto } from "@/utilities/other";
 import { Link } from "react-router-dom";
-// import Star from "@/assets/icons/Star.svg?react";
-// import Favorite from "@/assets/icons/favorite.svg?react";
-// import NotFavorite from "@/assets/icons/notFavorite.svg?react";
 import Bookmark from "@/assets/icons/bookmark_fav.svg?react";
 import BookmarkIcon from "@/assets/icons/Bookmark_unfav.svg?react";
 import { useDispatch, useSelector } from "react-redux";
 import { getfavoriteTVs } from "@/redux/favorite/selectors";
 import { toggleFavoriteTVs } from "@/redux/favorite/slice";
-// export interface TVCardProps {
-//   id: number;
-//   poster_path: string;
-//   title: string;
-// }
 
 export interface TVCardProps {
   movie: TVData;
-  // isFavorite: boolean;
 }
 
 const TVCard = ({ movie }: TVCardProps) => {
@@ -55,7 +46,6 @@ const TVCard = ({ movie }: TVCardProps) => {
           <div className="px-2 h-24 flex flex-col justify-evenly	">
             <h3 className="text-center h-12 overflow-hidden	">{movie.name}</h3>
             <div className=" flex justify-evenly items-center">
-              {/* <Star /> */}
               <p>{movie.vote_average.toFixed(2)}</p>
               <p>{movie.first_air_date.slice(0, 4)}</p>
             </div>

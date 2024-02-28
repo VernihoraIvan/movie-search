@@ -9,8 +9,8 @@ const Header = () => {
         <Logo className="h-14 w-14" />
       </NavLink>
       <div className="flex gap-10">
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/movies">Search</NavLink>
+        <NavLink to="/movies">Home</NavLink>
+        <NavLink to="/search">Search</NavLink>
         <NavLink to="/tv">TV series</NavLink>
         <NavLink to="/wishlist">Wishlist</NavLink>
       </div>

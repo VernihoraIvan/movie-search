@@ -13,8 +13,8 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<TrendPage />} />
-        <Route path="/movies" element={<SearchPage />} />
+        <Route path="/movies" element={<TrendPage />} />
+        <Route path="/search" element={<SearchPage />} />
         <Route path="/tv" element={<TVSeriesPage />} />
         <Route path="/wishlist" element={<WishlistPage />} />
         <Route path="movies/:moviesId/" element={<MovieDeatails />}>

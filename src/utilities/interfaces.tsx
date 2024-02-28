@@ -49,11 +49,6 @@ export interface TVData {
   origin_country: string[];
 }
 
-// export interface TVData extends Omit<TVRoughData, "name" | "first_air_date"> {
-//   title: string;
-//   release_date: string;
-// }
-
 export interface DetailsElementProps {
   title: string;
   text: string;

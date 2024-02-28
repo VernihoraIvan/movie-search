@@ -1,20 +1,11 @@
 import { MovieData } from "@/utilities/interfaces";
 import { unknownPhoto } from "@/utilities/other";
 import { Link } from "react-router-dom";
-// import Star from "@/assets/icons/Star.svg?react";
-// import Favorite from "@/assets/icons/favorite.svg?react";
-// import NotFavorite from "@/assets/icons/notFavorite.svg?react";
 import Bookmark from "@/assets/icons/bookmark_fav.svg?react";
 import BookmarkIcon from "@/assets/icons/Bookmark_unfav.svg?react";
 import { useDispatch, useSelector } from "react-redux";
 import { getfavoriteMovie } from "@/redux/favorite/selectors";
 import { toggleFavoriteMovies } from "@/redux/favorite/slice";
-// export interface MovieCardProps {
-//   id: number;
-//   poster_path: string;
-//   title: string;
-// }
-
 export interface MovieCardProps {
   movie: MovieData;
   // isFavorite: boolean;
@@ -38,7 +29,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
       >
         {isActive ? <Bookmark /> : <BookmarkIcon />}
       </div>
-      <Link className="flex h-full" to={`movies/${movie.id}`}>
+      <Link className="flex h-full" to={`/movies/${movie.id}`}>
         <div
           className=" rounded-lg shadow-xl col-span-1 row-span-1
       "

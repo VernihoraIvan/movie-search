@@ -29,7 +29,6 @@ export const fetchMovies = async (): Promise<MovieData[]> => {
 export const fetchTVSeries = async (): Promise<TVData[]> => {
   try {
     const { data } = await axios.get<TVListResponse>("/trending/tv/day");
-    console.log(data);
     return data.results;
   } catch (error) {
     window.alert(error);
@@ -40,8 +39,6 @@ export const fetchTVSeries = async (): Promise<TVData[]> => {
 export const fetchData = async (query: string) => {
   try {
     const { data } = await axios.get(`/search/movie?${API_KEY}query=${query}`);
-    console.log(data);
-
     return data.results;
   } catch (error) {
     window.alert(error);
@@ -52,8 +49,6 @@ export const fetchData = async (query: string) => {
 export const fetchMovieByQuery = async (query: string) => {
   try {
     const { data } = await axios.get(`/search/movie?query=${query}`);
-    console.log(data);
-
     return data.results;
   } catch (error) {
     window.alert(error);
@@ -63,8 +58,6 @@ export const fetchMovieByQuery = async (query: string) => {
 export const fetchMovieDetails = async (id: string) => {
   try {
     const { data } = await axios.get(`/movie/${id}`);
-    console.log(data);
-
     return data;
   } catch (error) {
     window.alert(error);
@@ -75,8 +68,6 @@ export const fetchMovieDetails = async (id: string) => {
 export const fetchMovieCast = async (id: string) => {
   try {
     const { data } = await axios.get(`movie/${id}/credits`);
-    console.log(data);
-
     return data.cast;
   } catch (error) {
     window.alert(error);
@@ -86,7 +77,6 @@ export const fetchMovieCast = async (id: string) => {
 export const fetchMovieReview = async (id: string) => {
   try {
     const { data } = await axios.get(`/movie/${id}/reviews`);
-    console.log(data.results[0]);
     return data.results[0];
   } catch (error) {
     window.alert(error);
