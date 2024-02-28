@@ -23,7 +23,7 @@ const TVCard = memo(({ movie }: TVCardProps) => {
   const isActive = TVs?.includes(movie.id);
 
   return (
-    <div className="relative">
+    <div className="relative h-full">
       <div
         className="relative left-2.5 top-10 cursor-pointer w-6 h-6"
         onClick={() => onToggle(movie.id)}
@@ -33,7 +33,7 @@ const TVCard = memo(({ movie }: TVCardProps) => {
       <Link className="flex h-full" to={`movies/${movie.id}`}>
         <div className="rounded-lg shadow-xl col-span-1 row-span-1">
           <img
-            className="max-h-80"
+            className=" object-cover max-h-80"
             src={
               movie.poster_path
                 ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
@@ -41,7 +41,7 @@ const TVCard = memo(({ movie }: TVCardProps) => {
             }
             alt={movie.name}
           />
-          <div className="px-2 h-24 flex flex-col justify-evenly">
+          <div className="px-2 py-2 flex flex-col justify-evenly">
             <h3 className="text-center h-12 overflow-hidden">{movie.name}</h3>
             <div className="flex justify-evenly items-center">
               <p>{movie.vote_average.toFixed(2)}</p>

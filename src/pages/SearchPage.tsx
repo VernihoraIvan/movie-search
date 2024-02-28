@@ -60,7 +60,7 @@ const SearchPage = () => {
   }, [searchParams, handleSearchOnChange]);
 
   return (
-    <div className="px-5 py-5">
+    <div className="px-5 py-5 wallpaper mt-headerM">
       <Searchbar onChange={handleSearchOnChange} />
       {searchQuery.length > 0 && <SearchList list={searchQuery} />}
     </div>

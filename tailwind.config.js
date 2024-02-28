@@ -18,6 +18,7 @@ export default {
       },
       spacing: {
         7: "1.5rem",
+        headerM: "90px",
         cardW: "265px",
         cardH: "500px",
         80: "80%",
@@ -30,6 +31,7 @@ export default {
         // inputDark: "#3c4155",
         // darkSecondText: "#c2c8cf",
         // iconDark: "#1e293b",
+        bckgr: "#141414",
         grey: "#ababab",
         darkbg: "#334d5c",
         mainShadow: "10px 10px 25px -4px rgba(0,0,0,0.75)",

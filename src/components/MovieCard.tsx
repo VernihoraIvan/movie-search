@@ -41,7 +41,7 @@ const MovieCard = memo(({ movie }: MovieCardProps) => {
             }
             alt={movie.title}
           />
-          <div className="px-2 h-24 flex flex-col justify-evenly">
+          <div className="px-2 py-2 flex flex-col justify-evenly">
             <h3 className="text-center h-12 overflow-hidden">{movie.title}</h3>
             <div className="flex justify-evenly items-center">
               <p>{movie.vote_average.toFixed(2)}</p>

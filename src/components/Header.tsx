@@ -4,7 +4,8 @@ import { NavLink } from "react-router-dom";
 import Logo from "@/assets/icons/popcorn.svg?react";
 const Header = () => {
   return (
-    <header className="flex items-center justify-around py-4 px-4 border-2 bg-darkbg rounded-lg text-white">
+    // <header className="flex items-center justify-around py-4 px-4 border-2 bg-darkbg rounded-lg text-white">
+    <header className="top-0 w-full z-10 bg-bckgr text-white py-4 px-6 shadow-lg flex items-center justify-around fixed">
       <NavLink className="mr-60" to="/">
         <Logo className="h-14 w-14" />
       </NavLink>

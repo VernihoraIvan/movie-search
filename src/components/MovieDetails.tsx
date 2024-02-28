@@ -33,7 +33,7 @@ const MovieDeatails = () => {
   }
 
   return (
-    <div>
+    <div className="mt-headerM ml-28">
       <ReturnButton />
       <img
         src={

@@ -19,7 +19,7 @@ const TVSeriesPage = () => {
     getTVs();
   }, []);
   return (
-    <div className="px-5 py-5">
+    <div className="mt-headerM px-5 py-5 wallpaper">
       <TVSeriesList tv={tv} />
     </div>
   );

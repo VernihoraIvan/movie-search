@@ -28,7 +28,7 @@ const WishlistMoviesSection = () => {
 
   return (
     <div>
-      <h2 className="text-3xl">List of favorite movies</h2>
+      <h2 className="ml-28 text-3xl">List of favorite movies</h2>
       <ul
         className=" m-auto flex justify-center grid grid-cols-5 grid-rows-5 gap-x-10 gap-y-10
       "
