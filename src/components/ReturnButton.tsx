@@ -1,9 +1,16 @@
-import { Link } from "react-router-dom";
-interface Props {
-  to: string;
-}
-const ReturnButton = ({ to }: Props) => {
-  return <Link to={to}>← Go back</Link>;
+import { useNavigate } from "react-router-dom";
+
+const ReturnButton = () => {
+  const navigate = useNavigate();
+
+  return (
+    <button
+      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      onClick={() => navigate(-1)}
+    >
+      Go back
+    </button>
+  );
 };
 
 export default ReturnButton;

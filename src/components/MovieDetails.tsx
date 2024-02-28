@@ -1,7 +1,7 @@
 import { fetchMovieDetails } from "@/api/connection";
 import { MovieData } from "@/utilities/interfaces";
 import { useEffect, useState } from "react";
-import { Outlet, useLocation, useParams } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 import ReturnButton from "./ReturnButton";
 import DetailsElement from "./DetailsElement";
 import AdditionalInfoSection from "./AdditionalInfoSection";
@@ -11,7 +11,6 @@ const MovieDeatails = () => {
   const { moviesId } = useParams();
   const [movieDetails, setMovieDetails] = useState<MovieData | null>(null);
   // const [isLoading, setIsLoading] = useState<boolean>(false);
-  const location = useLocation();
 
   useEffect(() => {
     // setIsLoading(true);
@@ -29,15 +28,13 @@ const MovieDeatails = () => {
     getMovieDetails();
   }, [moviesId]);
 
-  const backLinkHref: string = location.state?.from ?? "/";
-
   if (!movieDetails) {
     return null;
   }
 
   return (
     <div>
-      <ReturnButton to={backLinkHref} />
+      <ReturnButton />
       <img
         src={
           movieDetails?.poster_path
