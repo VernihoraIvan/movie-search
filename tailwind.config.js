@@ -18,8 +18,8 @@ export default {
       },
       spacing: {
         7: "1.5rem",
-        cardW: "220px",
-        cardH: "400px",
+        cardW: "265px",
+        cardH: "500px",
         80: "80%",
       },
       colors: {

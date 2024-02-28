@@ -10,12 +10,9 @@ const SearchList = ({ list }: MoviesListProps) => {
     return null;
   }
   return (
-    <ul
-      className=" m-auto flex justify-center grid grid-cols-5 grid-rows-5 gap-x-10 gap-y-10
-      "
-    >
+    <ul className=" m-auto flex justify-center  gap-x-16 gap-y-10 flex-wrap">
       {list.map((movie) => (
-        <li key={movie.id}>
+        <li className="w-cardW h-cardH" key={movie.id}>
           <MovieCard movie={movie} />
         </li>
       ))}

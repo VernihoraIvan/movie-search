@@ -82,3 +82,15 @@ export const fetchMovieReview = async (id: string) => {
     window.alert(error);
   }
 };
+
+export const fetchFavorites = async (ids: number[]) => {
+  try {
+    const requests = ids.map((id) => axios.get(`/movie/${id}`));
+    const responses = await Promise.all(requests);
+    console.log(responses);
+    return responses.map((response) => response.data);
+  } catch (error) {
+    window.alert(error);
+    return [];
+  }
+};

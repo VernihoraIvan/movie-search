@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 // import MovieCard from "./MovieCard";
 import { MovieData } from "@/utilities/interfaces";
-import { fetchMovies } from "@/api/connection";
+import { fetchFavorites } from "@/api/connection";
 import { useSelector } from "react-redux";
 import { getfavoriteMovie } from "@/redux/favorite/selectors";
 import MovieCard from "./MovieCard";
@@ -13,13 +13,10 @@ const WishlistMoviesSection = () => {
   useEffect(() => {
     const getFavoriteMovieData = async () => {
       try {
-        const data = await fetchMovies();
-        console.log(data);
-
-        setMovies(data.filter((movie) => favoriteMovies.includes(movie.id)));
+        const data = await fetchFavorites(favoriteMovies);
+        setMovies(data);
       } catch (error) {
-        console.log("error", error);
-        setMovies([]);
+        console.log(error);
       }
     };
     getFavoriteMovieData();

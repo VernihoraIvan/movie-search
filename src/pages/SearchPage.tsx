@@ -1,5 +1,5 @@
 import Searchbar from "@/components/Searchbar";
-import { useSearchParams, useNavigate, useParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 
 import { useState, useCallback, useEffect } from "react";
 import { fetchMovieByQuery } from "@/api/connection";
@@ -9,7 +9,7 @@ import SearchList from "@/components/SearchList";
 const SearchPage = () => {
   const [searchQuery, setSearchQuery] = useState<MovieData[]>([]);
   // const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { movieId } = useParams();
+  // const { movieId } = useParams();
   console.log(searchQuery);
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -35,19 +35,19 @@ const SearchPage = () => {
     [navigate, searchParams]
   );
 
-  useEffect(() => {
-    const fetchMovies = async () => {
-      if (!movieId) return;
-      try {
-        const results = await fetchMovieByQuery(movieId);
-        setSearchQuery(results);
-      } catch (error) {
-        console.log("error", error);
-        setSearchQuery([]);
-      }
-    };
-    fetchMovies();
-  }, [movieId]);
+  // useEffect(() => {
+  //   const fetchMovies = async () => {
+  //     if (!movieId) return;
+  //     try {
+  //       const results = await fetchMovieByQuery(movieId);
+  //       setSearchQuery(results);
+  //     } catch (error) {
+  //       console.log("error", error);
+  //       setSearchQuery([]);
+  //     }
+  //   };
+  //   fetchMovies();
+  // }, [movieId]);
 
   useEffect(() => {
     const query = searchParams.get("query");
