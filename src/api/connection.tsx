@@ -21,7 +21,7 @@ export const fetchMovies = async (): Promise<MovieData[]> => {
     const { data } = await axios.get<MovieListResponse>("/trending/movie/day");
     return data.results;
   } catch (error) {
-    window.alert(error);
+    console.log(error);
     return [];
   }
 };
@@ -31,7 +31,7 @@ export const fetchTVSeries = async (): Promise<TVData[]> => {
     const { data } = await axios.get<TVListResponse>("/trending/tv/day");
     return data.results;
   } catch (error) {
-    window.alert(error);
+    console.log(error);
     return [];
   }
 };
@@ -41,7 +41,7 @@ export const fetchData = async (query: string) => {
     const { data } = await axios.get(`/search/movie?${API_KEY}query=${query}`);
     return data.results;
   } catch (error) {
-    window.alert(error);
+    console.log(error);
     return [];
   }
 };
@@ -51,7 +51,7 @@ export const fetchMovieByQuery = async (query: string) => {
     const { data } = await axios.get(`/search/movie?query=${query}`);
     return data.results;
   } catch (error) {
-    window.alert(error);
+    console.log(error);
   }
 };
 
@@ -60,7 +60,17 @@ export const fetchMovieDetails = async (id: string) => {
     const { data } = await axios.get(`/movie/${id}`);
     return data;
   } catch (error) {
-    window.alert(error);
+    console.log(error);
+    return [];
+  }
+};
+
+export const fetchTVsDetails = async (id: string) => {
+  try {
+    const { data } = await axios.get(`/tv/${id}`);
+    return data;
+  } catch (error) {
+    console.log(error);
     return [];
   }
 };
@@ -70,7 +80,7 @@ export const fetchMovieCast = async (id: string) => {
     const { data } = await axios.get(`movie/${id}/credits`);
     return data.cast;
   } catch (error) {
-    window.alert(error);
+    console.log(error);
   }
 };
 
@@ -79,7 +89,7 @@ export const fetchMovieReview = async (id: string) => {
     const { data } = await axios.get(`/movie/${id}/reviews`);
     return data.results[0];
   } catch (error) {
-    window.alert(error);
+    console.log(error);
   }
 };
 
@@ -90,7 +100,7 @@ export const fetchFavorites = async (ids: number[]) => {
     console.log(responses);
     return responses.map((response) => response.data);
   } catch (error) {
-    window.alert(error);
+    console.log(error);
     return [];
   }
 };

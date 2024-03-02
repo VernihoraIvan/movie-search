@@ -15,7 +15,7 @@ const Cast = () => {
         setCast(data);
         return data;
       } catch (error) {
-        window.alert(error);
+        console.log(error);
       } finally {
         //   setIsLoading(false);
       }

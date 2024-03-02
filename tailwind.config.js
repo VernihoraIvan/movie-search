@@ -35,6 +35,7 @@ export default {
         cardH: "500px",
         80: "80%",
         contW: "1400px",
+        45: "45%",
       },
       colors: {
         // bluesp: "#0ea5e9",

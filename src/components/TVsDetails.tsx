@@ -1,5 +1,5 @@
-import { fetchMovieDetails } from "@/api/connection";
-import { MovieData } from "@/utilities/interfaces";
+import { fetchTVsDetails } from "@/api/connection";
+import { TVData } from "@/utilities/interfaces";
 import { useEffect, useState } from "react";
 import { Outlet, useParams } from "react-router-dom";
 import ReturnButton from "./ReturnButton";
@@ -7,20 +7,20 @@ import DetailsElement from "./DetailsElement";
 import AdditionalInfoSection from "./AdditionalInfoSection";
 import { unknownImage } from "@/utilities/other";
 
-const MovieDeatails = () => {
+const TVsDetails = () => {
   const { moviesId } = useParams();
-  const [movieDetails, setMovieDetails] = useState<MovieData | null>(null);
+  const [tvDetails, setTVDetails] = useState<TVData | null>(null);
   // const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     // setIsLoading(true);
     const getMovieDetails = async () => {
       try {
-        const data = await fetchMovieDetails(moviesId as string);
-        setMovieDetails(data);
+        const data = await fetchTVsDetails(moviesId as string);
+        setTVDetails(data);
       } catch (error) {
         console.log("error", error);
-        setMovieDetails(null);
+        setTVDetails(null);
       } finally {
         // setIsLoading(false);
       }
@@ -28,7 +28,7 @@ const MovieDeatails = () => {
     getMovieDetails();
   }, [moviesId]);
 
-  if (!movieDetails) {
+  if (!tvDetails) {
     return null;
   }
 
@@ -39,33 +39,32 @@ const MovieDeatails = () => {
         <img
           className="w-cardW object-cover "
           src={
-            movieDetails?.poster_path
-              ? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`
+            tvDetails?.poster_path
+              ? `https://image.tmdb.org/t/p/w500/${tvDetails.poster_path}`
               : unknownImage
           }
-          alt={`movie's name: ${movieDetails?.title}`}
+          alt={`tv's name: ${tvDetails?.name}`}
         />
         <div className="w-7/12 flex flex-col gap-10">
-          <DetailsElement title={"Overview"} text={movieDetails.overview} />
+          <DetailsElement title={"Overview"} text={tvDetails.overview} />
           <DetailsElement
-            title={movieDetails.title}
-            text={`User score: ${(movieDetails.vote_average * 10).toFixed(
-              2
-            )} % `}
+            title={tvDetails.name}
+            text={`User score: ${(tvDetails.vote_average * 10).toFixed(2)} % `}
           />
           {/* <DetailsElement title={"Genres"} text={"text"}>
-          <ul>
-            {movieDetails.genres.map((genre) => (
-              <li key={genre.id}>{genre.name}</li>
-            ))}
-          </ul>
-        </DetailsElement> */}
+        <ul>
+          {tvDetails.genres.map((genre) => (
+            <li key={genre.id}>{genre.name}</li>
+          ))}
+        </ul>
+      </DetailsElement> */}
           <AdditionalInfoSection />
         </div>
       </div>
+
       <Outlet />
     </div>
   );
 };
 
-export default MovieDeatails;
+export default TVsDetails;

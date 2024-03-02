@@ -19,12 +19,11 @@ const TVCard = memo(({ movie }: TVCardProps) => {
   const onToggle = (id: number) => {
     dispatch(toggleFavoriteTVs(id));
   };
-
   const isActive = TVs?.includes(movie.id);
 
   return (
     <div className="relative h-full text-grey">
-      <Link className="flex h-full" to={`movies/${movie.id}`}>
+      <Link className="flex h-full" to={`/tv/${movie.id}`}>
         <div className="rounded-lg shadow-xl col-span-1 row-span-1">
           <img
             className=" object-cover h-80"

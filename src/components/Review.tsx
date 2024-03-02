@@ -17,7 +17,7 @@ const Review = () => {
         setReview(data);
         return data;
       } catch (error) {
-        window.alert(error);
+        console.log(error);
       } finally {
         // setIsLoading(false);
       }
@@ -31,7 +31,7 @@ const Review = () => {
 
   if (!review) {
     return (
-      <div>
+      <div className="mt-10">
         <DetailsElement
           title={"Review"}
           text={"We don't have any reviews for this movie."}

@@ -12,7 +12,7 @@ const BurgerMenu = () => {
     <div className="xxs:w-full">
       {!menuOpen && (
         <div className="flex justify-between">
-          <NavLink className=" xs:mr-0 " to="/movies">
+          <NavLink className=" xs:mr-0 " to="/">
             <Logo className="h-14 w-14" />
           </NavLink>
           <BurgerMenuIcon
