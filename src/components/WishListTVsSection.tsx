@@ -30,7 +30,7 @@ const WishlistTVsSection = () => {
   }
   return (
     <div>
-      <h2 className="xs:my-auto xxs:ml-0  ml-28 text-3xl">
+      <h2 className=" mb-10 sm:text-center xxs:ml-0  ml-28 text-3xl">
         List of favorite TVs
       </h2>
       <div>

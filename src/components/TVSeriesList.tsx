@@ -30,7 +30,9 @@ const TVSeriesList = ({ tv }: TVSeriesListProps) => {
   const dataArray = tv ? tv : movies;
   return (
     <div>
-      <h2 className="xs:my-auto xxs:ml-0  ml-28 text-3xl">TV series</h2>
+      <h2 className="sm:text-center mb-10 xxs:ml-0  ml-28 text-3xl">
+        TV series
+      </h2>
       <ul className="md:px-14 flex xs:justify-center sm:px-2 justify-start gap-x-16 gap-y-10 flex-wrap">
         {dataArray.map((movie) => (
           <li className="w-cardW h-cardH" key={movie.id}>

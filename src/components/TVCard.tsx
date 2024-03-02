@@ -23,17 +23,11 @@ const TVCard = memo(({ movie }: TVCardProps) => {
   const isActive = TVs?.includes(movie.id);
 
   return (
-    <div className="relative h-full">
-      <div
-        className="relative left-2.5 top-10 cursor-pointer w-6 h-6"
-        onClick={() => onToggle(movie.id)}
-      >
-        {isActive ? <Bookmark /> : <BookmarkIcon />}
-      </div>
+    <div className="relative h-full ">
       <Link className="flex h-full" to={`movies/${movie.id}`}>
         <div className="rounded-lg shadow-xl col-span-1 row-span-1">
           <img
-            className=" object-cover max-h-80"
+            className=" object-cover h-80"
             src={
               movie.poster_path
                 ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
@@ -50,6 +44,12 @@ const TVCard = memo(({ movie }: TVCardProps) => {
           </div>
         </div>
       </Link>
+      <div
+        className="relative left-2.5 bottom-12 cursor-pointer w-6 h-6"
+        onClick={() => onToggle(movie.id)}
+      >
+        {isActive ? <Bookmark /> : <BookmarkIcon />}
+      </div>
     </div>
   );
 });

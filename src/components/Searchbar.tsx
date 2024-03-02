@@ -13,7 +13,7 @@ const Searchbar = ({ onChange }: HandlerOnChange) => {
   };
 
   return (
-    <div>
+    <div className=" mb-10">
       <label className="ml-28">
         Search
         <input

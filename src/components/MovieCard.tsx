@@ -24,12 +24,6 @@ const MovieCard = memo(({ movie }: MovieCardProps) => {
 
   return (
     <div className="relative h-full">
-      <div
-        className="relative left-2.5 top-10 cursor-pointer w-6 h-6"
-        onClick={() => onToggle(movie)}
-      >
-        {isActive ? <Bookmark /> : <BookmarkIcon />}
-      </div>
       <Link className="flex h-full" to={`/movies/${movie.id}`}>
         <div className="rounded-lg shadow-xl col-span-1 row-span-1">
           <img
@@ -50,6 +44,12 @@ const MovieCard = memo(({ movie }: MovieCardProps) => {
           </div>
         </div>
       </Link>
+      <div
+        className="relative left-2.5 bottom-12 cursor-pointer w-6 h-6"
+        onClick={() => onToggle(movie)}
+      >
+        {isActive ? <Bookmark /> : <BookmarkIcon />}
+      </div>
     </div>
   );
 });

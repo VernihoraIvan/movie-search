@@ -24,12 +24,32 @@ const BurgerMenu = () => {
       {menuOpen && (
         <div
           onClick={handleMenu}
-          className="  flex-col gap-10 xxs:flex hidden w-screen h-screen z-10s"
+          className="py-8 flex-col gap-10 xxs:flex hidden w-screen h-screen z-10s"
         >
-          <NavLink to="/movies">Home</NavLink>
-          <NavLink to="/search">Search</NavLink>
-          <NavLink to="/tv">TV series</NavLink>
-          <NavLink to="/wishlist">Wishlist</NavLink>
+          <NavLink
+            className="border border-solid border-grey py-2 px-4 rounded-xl w-28"
+            to="/movies"
+          >
+            Home
+          </NavLink>
+          <NavLink
+            className="border border-solid border-grey py-2 px-4 rounded-xl w-28"
+            to="/search"
+          >
+            Search
+          </NavLink>
+          <NavLink
+            className="border border-solid border-grey py-2 px-4 rounded-xl w-28"
+            to="/tv"
+          >
+            TV series
+          </NavLink>
+          <NavLink
+            className="border border-solid border-grey py-2 px-4 rounded-xl w-28"
+            to="/wishlist"
+          >
+            Wishlist
+          </NavLink>
         </div>
       )}
     </div>
