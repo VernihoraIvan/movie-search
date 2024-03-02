@@ -17,9 +17,13 @@ const DetailsElement = ({
   return (
     <div>
       <h2 className="text-white mb-3">{title}</h2>
-      {author && <h3>Author: {author}</h3>}
+      {author && (
+        <h3 className="text-white">
+          Author: <span className="text-grey  ">{author}</span>
+        </h3>
+      )}
       {children && <div>{children}</div>}
-      <div>{text}</div>
+      <div className="my-5">{text}</div>
     </div>
   );
 };

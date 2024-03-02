@@ -41,7 +41,7 @@ const Review = () => {
   }
 
   return (
-    <div>
+    <div className="mt-10">
       <DetailsElement
         title={"Review"}
         text={review.content}
