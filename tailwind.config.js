@@ -3,7 +3,19 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      animation: {
+        "fade-in": "fade-in 0.5s ease-out",
+      },
+      keyframes: {
+        "fade-in": {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
+      },
       screens: {
+        xxs: { max: "460px" },
+        xs: { max: "639px" },
+        // => @media (max-width: 639px) { ... }
         sm: { min: "640px", max: "767px" },
         // => @media (min-width: 640px and max-width: 767px) { ... }
 
@@ -38,5 +50,6 @@ export default {
       },
     },
   },
+  variants: {},
   plugins: [],
 };
