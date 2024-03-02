@@ -25,7 +25,7 @@ const Cast = () => {
 
   if (!cast) {
     return (
-      <div>
+      <div className="mt-10">
         <DetailsElement
           title={"Cast"}
           text={"We don't have any casts for this movie."}
@@ -35,12 +35,15 @@ const Cast = () => {
   }
 
   return (
-    <>
-      <ul>
+    <div className="mt-10">
+      <ul className="flex flex-wrap gap-x-8 gap-y-5">
         {cast.map((element) => (
-          <li key={element.credit_id}>
-            <h3>{element.name}</h3>
+          <li
+            className="flex gap-6 mt-10 flex-col max-w-36 max-h-72 overflow-hidden"
+            key={element.credit_id}
+          >
             <img
+              className="w-36 rounded-md object-cover h-52"
               src={
                 element.profile_path
                   ? `https://image.tmdb.org/t/p/w500/${element.profile_path}`
@@ -48,13 +51,16 @@ const Cast = () => {
               }
               alt={element.name}
             />
-            <p>{element.character}</p>
+            <div className="h-12 overflow-y-hidden">
+              <h3 className="text-white">{element.name}</h3>
+              <p>{element.character}</p>
+            </div>
           </li>
         ))}
         ;
       </ul>
       <p>cast vs</p>
-    </>
+    </div>
   );
 };
 

@@ -33,29 +33,34 @@ const MovieDeatails = () => {
   }
 
   return (
-    <div className="mt-headerM ml-28">
+    <div className="mt-headerM xl:pl-36 xl:w-contW">
       <ReturnButton />
-      <img
-        src={
-          movieDetails?.poster_path
-            ? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`
-            : unknownImage
-        }
-        alt={`movie's name: ${movieDetails?.title}`}
-      />
-      <DetailsElement title={"Overview"} text={movieDetails.overview} />
-      <DetailsElement
-        title={movieDetails.title}
-        text={`User score: ${movieDetails.vote_average * 10} % `}
-      />
-      {/* <DetailsElement title={"Genres"} text={"text"}>
+      <div className="flex gap-16">
+        <img
+          className="w-cardW object-cover "
+          src={
+            movieDetails?.poster_path
+              ? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`
+              : unknownImage
+          }
+          alt={`movie's name: ${movieDetails?.title}`}
+        />
+        <div className="w-7/12 flex flex-col gap-10">
+          <DetailsElement title={"Overview"} text={movieDetails.overview} />
+          <DetailsElement
+            title={movieDetails.title}
+            text={`User score: ${movieDetails.vote_average * 10} % `}
+          />
+          {/* <DetailsElement title={"Genres"} text={"text"}>
         <ul>
           {movieDetails.genres.map((genre) => (
             <li key={genre.id}>{genre.name}</li>
           ))}
         </ul>
       </DetailsElement> */}
-      <AdditionalInfoSection />
+          <AdditionalInfoSection />
+        </div>
+      </div>
       <Outlet />
     </div>
   );

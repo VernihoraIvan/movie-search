@@ -27,11 +27,11 @@ const WishlistMoviesSection = () => {
   }
 
   return (
-    <div>
+    <div className="xl:flex xl:flex-col xl:pl-10">
       <h2 className=" mb-10 sm:text-center xxs:ml-0  ml-28 text-3xl">
         List of favorite movies
       </h2>
-      <ul className="mb-16  md:px-14 flex xs:justify-center sm:px-2 justify-start gap-x-16 gap-y-10 flex-wrap">
+      <ul className="mb-16  md:px-14 flex  xs:justify-center sm:px-2 justify-start gap-x-16 gap-y-10 flex-wrap">
         {movies?.map((movie) => (
           <li className="w-cardW h-cardH" key={movie.id}>
             <MovieCard movie={movie} />

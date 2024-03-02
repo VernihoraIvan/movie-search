@@ -34,6 +34,7 @@ export default {
         cardW: "265px",
         cardH: "500px",
         80: "80%",
+        contW: "1400px",
       },
       colors: {
         // bluesp: "#0ea5e9",
@@ -43,6 +44,7 @@ export default {
         // inputDark: "#3c4155",
         // darkSecondText: "#c2c8cf",
         // iconDark: "#1e293b",
+        inputBg: "#363636",
         bckgr: "#141414",
         grey: "#ababab",
         darkbg: "#334d5c",

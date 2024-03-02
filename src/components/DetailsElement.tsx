@@ -16,7 +16,7 @@ const DetailsElement = ({
   }
   return (
     <div>
-      <h2>{title}</h2>
+      <h2 className="text-white mb-3">{title}</h2>
       {author && <h3>Author: {author}</h3>}
       {children && <div>{children}</div>}
       <div>{text}</div>

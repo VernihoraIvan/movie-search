@@ -29,7 +29,7 @@ const TVSeriesList = ({ tv }: TVSeriesListProps) => {
 
   const dataArray = tv ? tv : movies;
   return (
-    <div>
+    <div className="xl:flex xl:flex-col xl:pl-10">
       <h2 className="sm:text-center mb-10 xxs:ml-0  ml-28 text-3xl">
         TV series
       </h2>

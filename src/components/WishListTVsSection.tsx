@@ -29,7 +29,7 @@ const WishlistTVsSection = () => {
     return null;
   }
   return (
-    <div>
+    <div className="xl:flex xl:flex-col xl:pl-10">
       <h2 className=" mb-10 sm:text-center xxs:ml-0  ml-28 text-3xl">
         List of favorite TVs
       </h2>
