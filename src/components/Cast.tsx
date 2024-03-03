@@ -23,9 +23,9 @@ const Cast = () => {
     getMovieCast();
   }, [moviesId]);
 
-  if (!cast) {
+  if (cast.length === 0) {
     return (
-      <div className="mt-10">
+      <div className="pl-10 mt-10">
         <DetailsElement
           title={"Cast"}
           text={"We don't have any casts for this movie."}
@@ -58,7 +58,6 @@ const Cast = () => {
           </li>
         ))}
       </ul>
-      <p>cast vs</p>
     </div>
   );
 };

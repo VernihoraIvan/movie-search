@@ -9,8 +9,7 @@ import SearchList from "@/components/SearchList";
 const SearchPage = () => {
   const [searchQuery, setSearchQuery] = useState<MovieData[]>([]);
   // const [isLoading, setIsLoading] = useState<boolean>(false);
-  // const { movieId } = useParams();
-  console.log(searchQuery);
+
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const handleSearchOnChange = useCallback(
@@ -35,23 +34,8 @@ const SearchPage = () => {
     [navigate, searchParams]
   );
 
-  // useEffect(() => {
-  //   const fetchMovies = async () => {
-  //     if (!movieId) return;
-  //     try {
-  //       const results = await fetchMovieByQuery(movieId);
-  //       setSearchQuery(results);
-  //     } catch (error) {
-  //       console.log("error", error);
-  //       setSearchQuery([]);
-  //     }
-  //   };
-  //   fetchMovies();
-  // }, [movieId]);
-
   useEffect(() => {
     const query = searchParams.get("query");
-    console.log(query);
     if (query) {
       handleSearchOnChange(query);
     } else {

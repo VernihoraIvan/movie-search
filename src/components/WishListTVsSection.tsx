@@ -13,8 +13,6 @@ const WishlistTVsSection = () => {
     const getFavoriteMovieData = async () => {
       try {
         const data = await fetchTVSeries();
-        console.log(data);
-
         setMovies(data.filter((movie) => favoriteMovies.includes(movie.id)));
       } catch (error) {
         console.log("error", error);
@@ -23,7 +21,6 @@ const WishlistTVsSection = () => {
     };
     getFavoriteMovieData();
   }, [favoriteMovies]);
-  console.log(movies);
 
   if (movies.length === 0) {
     return null;
