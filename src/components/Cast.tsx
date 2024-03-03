@@ -35,8 +35,8 @@ const Cast = () => {
   }
 
   return (
-    <div className="mt-10">
-      <ul className="flex flex-wrap gap-x-8 gap-y-5">
+    <div className="mt-10 pl-10">
+      <ul className="flex flex-wrap gap-x-8 gap-y-5 sm:justify-center">
         {cast.map((element) => (
           <li
             className="flex gap-6 mt-10 flex-col max-w-36 max-h-72 overflow-hidden"
@@ -57,7 +57,6 @@ const Cast = () => {
             </div>
           </li>
         ))}
-        ;
       </ul>
       <p>cast vs</p>
     </div>

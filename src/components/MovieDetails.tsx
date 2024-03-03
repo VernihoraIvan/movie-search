@@ -33,9 +33,9 @@ const MovieDeatails = () => {
   }
 
   return (
-    <div className="mt-headerM xl:pl-36 xl:w-contW">
+    <div className="mt-headerM xl:pl-36 xl:w-contW pb-10">
       <ReturnButton />
-      <div className="flex gap-16">
+      <div className="flex gap-16 xs:flex-col pl-10">
         <img
           className="w-cardW object-cover "
           src={

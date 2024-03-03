@@ -31,7 +31,7 @@ const Review = () => {
 
   if (!review) {
     return (
-      <div className="mt-10">
+      <div className="pl-10 mt-10">
         <DetailsElement
           title={"Review"}
           text={"We don't have any reviews for this movie."}
@@ -41,7 +41,7 @@ const Review = () => {
   }
 
   return (
-    <div className="mt-10">
+    <div className="pl-10 mt-10">
       <DetailsElement
         title={"Review"}
         text={review.content}
