@@ -14,7 +14,7 @@ const Searchbar = ({ onChange }: HandlerOnChange) => {
 
   return (
     <div className=" mb-10">
-      <label className="ml-28">
+      <label className="ml-28 ">
         Search
         <input
           value={input}
@@ -23,7 +23,7 @@ const Searchbar = ({ onChange }: HandlerOnChange) => {
           autoComplete="off"
           autoFocus
           placeholder="Please enter movie name"
-          className="bg-inputBg px-1 py-1 ml-2 border-2 border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-black-900 focus:border-transparent"
+          className="xxs:mt-2 xxs:ml-16 bg-inputBg px-1 py-1 ml-2 border-2 border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-black-900 focus:border-transparent"
         />
       </label>
     </div>
