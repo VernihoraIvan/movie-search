@@ -23,7 +23,7 @@ const Cast = () => {
     getMovieCast();
   }, [moviesId]);
 
-  if (cast.length === 0) {
+  if (!cast) {
     return (
       <div className="pl-10 mt-10">
         <DetailsElement
