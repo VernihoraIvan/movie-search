@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
 import { MovieData } from "@/utilities/interfaces";
 import { fetchMovies } from "@/api/connection";
+import { Loader } from "./Loader";
 
 interface TrendsListProps {
   list?: MovieData[];
@@ -9,11 +10,13 @@ interface TrendsListProps {
 
 const TrendsList = ({ list }: TrendsListProps) => {
   const [movies, setMovies] = useState<MovieData[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     if (list) {
       const getMovies = async () => {
         try {
+          setIsLoading(true);
           const data = await fetchMovies();
           setMovies(data);
         } catch (error) {
@@ -23,12 +26,15 @@ const TrendsList = ({ list }: TrendsListProps) => {
           } else {
             setMovies([]);
           }
+        } finally {
+          setIsLoading(false);
         }
       };
       getMovies();
     } else {
       const getTVs = async () => {
         try {
+          setIsLoading(true);
           const data = await fetchMovies();
           setMovies(data);
         } catch (error) {
@@ -38,12 +44,17 @@ const TrendsList = ({ list }: TrendsListProps) => {
           } else {
             setMovies([]);
           }
+        } finally {
+          setIsLoading(false);
         }
       };
       getTVs();
     }
   }, [list]);
 
+  if (isLoading) {
+    return <Loader />;
+  }
   const dataArray = list ? list : movies;
   return (
     <div className="xl:flex xl:flex-col xl:pl-10">

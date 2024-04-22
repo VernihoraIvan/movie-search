@@ -5,22 +5,31 @@ import { fetchFavorites } from "@/api/connection";
 import { useSelector } from "react-redux";
 import { getfavoriteMovie } from "@/redux/favorite/selectors";
 import MovieCard from "./MovieCard";
+import { Loader } from "./Loader";
 
 const WishlistMoviesSection = () => {
   const [movies, setMovies] = useState<MovieData[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const favoriteMovies = useSelector(getfavoriteMovie);
   useEffect(() => {
     const getFavoriteMovieData = async () => {
       try {
+        setIsLoading(true);
         const data = await fetchFavorites(favoriteMovies);
         setMovies(data);
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false);
       }
     };
     getFavoriteMovieData();
   }, [favoriteMovies]);
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   if (movies.length === 0) {
     return null;

@@ -1,33 +1,11 @@
-// import { useEffect, useState } from "react";
 import { TVData } from "@/utilities/interfaces";
-// import { fetchTVSeries } from "@/api/connection";
 import TVCard from "./TVCard";
 
 interface TVSeriesListProps {
   tv: TVData[];
 }
 
-const TVSeriesList = ({ tv }: TVSeriesListProps) => {
-  // const [movies, setMovies] = useState<TVData[]>([]);
-  // useEffect(() => {
-  //   const getMovies = async () => {
-  //     try {
-  //       const data = await fetchTVSeries();
-  //       console.log(data);
-  //       setMovies(data);
-  //     } catch (error) {
-  //       console.log("error", error);
-  //       if (tv) {
-  //         setMovies(tv);
-  //       } else {
-  //         setMovies([]);
-  //       }
-  //     }
-  //   };
-  //   getMovies();
-  // }, [tv]);
-
-  // const dataArray = tv ? tv : movies;
+const TVSeriesList = ({ tv }: TVSeriesListProps) => { 
   return (
     <div className="xl:flex xl:flex-col xl:pl-10">
       <h2 className="sm:text-center mb-10 xxs:ml-0  ml-28 text-3xl">

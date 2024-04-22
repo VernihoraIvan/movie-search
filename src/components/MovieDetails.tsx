@@ -6,14 +6,15 @@ import ReturnButton from "./ReturnButton";
 import DetailsElement from "./DetailsElement";
 import AdditionalInfoSection from "./AdditionalInfoSection";
 import { unknownImage } from "@/utilities/other";
+import { Loader } from "./Loader";
 
 const MovieDeatails = () => {
   const { moviesId } = useParams();
   const [movieDetails, setMovieDetails] = useState<MovieData | null>(null);
-  // const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    // setIsLoading(true);
+    setIsLoading(true);
     const getMovieDetails = async () => {
       try {
         const data = await fetchMovieDetails(moviesId as string);
@@ -22,11 +23,15 @@ const MovieDeatails = () => {
         console.log("error", error);
         setMovieDetails(null);
       } finally {
-        // setIsLoading(false);
+        setIsLoading(false);
       }
     };
     getMovieDetails();
   }, [moviesId]);
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   if (!movieDetails) {
     return null;

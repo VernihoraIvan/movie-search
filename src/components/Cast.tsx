@@ -4,24 +4,31 @@ import { useParams } from "react-router-dom";
 import DetailsElement from "./DetailsElement";
 import { CastData } from "@/utilities/interfaces";
 import { unknownPhoto } from "@/utilities/other";
+import { Loader } from "./Loader";
 
 const Cast = () => {
   const [cast, setCast] = useState<CastData[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const { moviesId } = useParams();
   useEffect(() => {
     const getMovieCast = async () => {
       try {
+        setIsLoading(true);
         const data = await fetchMovieCast(moviesId as string);
         setCast(data);
         return data;
       } catch (error) {
         console.log(error);
       } finally {
-        //   setIsLoading(false);
+        setIsLoading(false);
       }
     };
     getMovieCast();
   }, [moviesId]);
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   if (!cast) {
     return (
