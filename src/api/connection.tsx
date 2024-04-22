@@ -46,9 +46,11 @@ export const fetchData = async (query: string) => {
   }
 };
 
-export const fetchMovieByQuery = async (query: string) => {
+export const fetchMovieByQuery = async (query: string, page: number) => {
   try {
-    const { data } = await axios.get(`/search/movie?query=${query}`);
+    const { data } = await axios.get(
+      `/search/movie?query=${query}&page=${page}`
+    );
     return data.results;
   } catch (error) {
     console.log(error);
@@ -97,7 +99,6 @@ export const fetchFavorites = async (ids: number[]) => {
   try {
     const requests = ids.map((id) => axios.get(`/movie/${id}`));
     const responses = await Promise.all(requests);
-    console.log(responses);
     return responses.map((response) => response.data);
   } catch (error) {
     console.log(error);
