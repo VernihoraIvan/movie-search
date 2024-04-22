@@ -12,8 +12,8 @@ const Header = () => {
       </NavLink> */}
       <BurgerMenu />
       <div className="flex gap-10 xxs:hidden">
-        <NavLink to="/">Home</NavLink>
         <NavLink to="/search">Search</NavLink>
+        <NavLink to="/">Movies</NavLink>
         <NavLink to="/tv">TV series</NavLink>
         <NavLink to="/wishlist">Wishlist</NavLink>
       </div>

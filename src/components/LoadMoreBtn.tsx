@@ -5,7 +5,7 @@ type Props = {
 
 const LoadMoreBtn = ({ setPage, page }: Props) => {
   return (
-    <div>
+    <div className="flex justify-center">
       <button
         className="my-5 bg-gray-800 hover:bg-gray-900 hover:text-white font-bold py-2 px-4 rounded"
         onClick={() => setPage(page + 1)}
