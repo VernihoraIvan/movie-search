@@ -1,7 +1,7 @@
 import { fetchPersonDetails } from "@/api/connection";
 import { PersonData } from "@/utilities/interfaces";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Loader } from "./Loader";
 import { unknownImage } from "@/utilities/other";
 
@@ -10,6 +10,11 @@ const Filmography = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const { personId } = useParams();
+  const navigate = useNavigate();
+
+  const handlerCastOnClick = async (id: number) => {
+    navigate(`/movies/${id.toString()}`);
+  };
 
   useEffect(() => {
     const fetchPerson = async () => {
@@ -38,6 +43,7 @@ const Filmography = () => {
         {personDetails &&
           personDetails.map((element) => (
             <li
+              onClick={() => handlerCastOnClick(element.id)}
               className="cursor-pointer flex  mt-10 flex-col max-w-36 max-h-cardW overflow-hidden"
               key={element.credit_id}
             >

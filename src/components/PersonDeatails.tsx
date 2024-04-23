@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { fetchPersonDetails, fetchPersonDetailsById } from "@/api/connection";
 import { Actor, PersonData } from "@/utilities/interfaces";
 import { Loader } from "./Loader";
-import { unknownImage } from "@/utilities/other";
+import { unknownPhoto } from "@/utilities/other";
 import DetailsElement from "./DetailsElement";
 
 const PersonDetails = () => {
@@ -47,7 +47,7 @@ const PersonDetails = () => {
           src={
             person?.profile_path
               ? `https://image.tmdb.org/t/p/w500/${person.profile_path}`
-              : unknownImage
+              : unknownPhoto
           }
           alt={`actor's name: ${person?.name}`}
         />
