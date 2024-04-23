@@ -34,11 +34,11 @@ const Filmography = () => {
   return (
     <div>
       <h2 className="text-2xl mt-10">Known for:</h2>
-      <ul className="flex flex-wrap gap-x-8 gap-y-5 sm:justify-center">
+      <ul className="pl-10 flex flex-wrap gap-x-8 gap-y-5 sm:justify-center">
         {personDetails &&
           personDetails.map((element) => (
             <li
-              className="cursor-pointer flex  mt-10 flex-col max-w-36 max-h-72 overflow-hidden"
+              className="cursor-pointer flex  mt-10 flex-col max-w-36 max-h-cardW overflow-hidden"
               key={element.credit_id}
             >
               <img
@@ -50,7 +50,7 @@ const Filmography = () => {
                 }
                 alt={element.title}
               />
-              <div className="h-full flex flex-col justify-between">
+              <div className="h-12 flex flex-col justify-between">
                 <p className="h-6 text-white text-center overflow-y-hidden">
                   {element.title}
                 </p>

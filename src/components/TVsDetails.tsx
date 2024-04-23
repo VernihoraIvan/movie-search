@@ -9,7 +9,7 @@ import { unknownImage } from "@/utilities/other";
 import { Loader } from "./Loader";
 
 const TVsDetails = () => {
-  const { moviesId } = useParams();
+  const { tvId } = useParams();
   const [tvDetails, setTVDetails] = useState<TVData | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -17,7 +17,7 @@ const TVsDetails = () => {
     setIsLoading(true);
     const getMovieDetails = async () => {
       try {
-        const data = await fetchTVsDetails(moviesId as string);
+        const data = await fetchTVsDetails(tvId as string);
         setTVDetails(data);
       } catch (error) {
         console.log("error", error);
@@ -27,7 +27,7 @@ const TVsDetails = () => {
       }
     };
     getMovieDetails();
-  }, [moviesId]);
+  }, [tvId]);
 
   if (isLoading) {
     return <Loader />;

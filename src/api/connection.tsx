@@ -86,6 +86,15 @@ export const fetchMovieCast = async (id: string) => {
   }
 };
 
+export const fetchTVCast = async (id: string) => {
+  try {
+    const { data } = await axios.get(`tv/${id}/credits`);
+    return data.cast;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const fetchPersonDetails = async (id: string) => {
   try {
     const { data } = await axios.get(`/person/${id}/combined_credits`);
