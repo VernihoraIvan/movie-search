@@ -9,6 +9,8 @@ import Review from "./components/Review";
 import TVSeriesPage from "./pages/TVSeriesPage";
 import WishlistPage from "./pages/WishlistPage";
 import TVsDetails from "./components/TVsDetails";
+import PersonDetails from "./components/PersonDeatails";
+import Filmography from "./components/Filmography";
 
 function App() {
   return (
@@ -21,6 +23,9 @@ function App() {
         <Route path="movies/:moviesId/" element={<MovieDeatails />}>
           <Route path="cast" element={<Cast />} />
           <Route path="review" element={<Review />} />
+        </Route>
+        <Route path="person/:personId/" element={<PersonDetails />}>
+          <Route path="filmography" element={<Filmography />} />
         </Route>
         <Route path="tv/:moviesId/" element={<TVsDetails />}>
           <Route path="cast" element={<Cast />} />

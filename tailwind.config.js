@@ -28,11 +28,17 @@ export default {
         xl: { min: "1200px" },
         // => @media (min-width: 1280px and max-width: 1535px) { ... }
       },
+      width: {
+        fit: "fit-content",
+      },
       spacing: {
         7: "1.5rem",
         headerM: "90px",
         cardW: "265px",
         cardH: "500px",
+        imgH: "400px",
+        filmW: "145px",
+        filmH: "210px",
         80: "80%",
         contW: "1400px",
         45: "45%",

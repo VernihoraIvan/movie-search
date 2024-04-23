@@ -1,6 +1,6 @@
 import { fetchMovieCast } from "@/api/connection";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import DetailsElement from "./DetailsElement";
 import { CastData } from "@/utilities/interfaces";
 import { unknownPhoto } from "@/utilities/other";
@@ -9,7 +9,14 @@ import { Loader } from "./Loader";
 const Cast = () => {
   const [cast, setCast] = useState<CastData[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const { moviesId } = useParams();
+  const navigate = useNavigate();
+
+  const handlerCastOnClick = async (id: number) => {
+    navigate(`/person/${id.toString()}`);
+  };
+
   useEffect(() => {
     const getMovieCast = async () => {
       try {
@@ -46,7 +53,8 @@ const Cast = () => {
       <ul className="flex flex-wrap gap-x-8 gap-y-5 sm:justify-center">
         {cast.map((element) => (
           <li
-            className="flex gap-6 mt-10 flex-col max-w-36 max-h-72 overflow-hidden"
+            onClick={() => handlerCastOnClick(element.id)}
+            className="cursor-pointer flex gap-6 mt-10 flex-col max-w-36 max-h-72 overflow-hidden"
             key={element.credit_id}
           >
             <img

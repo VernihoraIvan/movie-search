@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 import ReturnButton from "./ReturnButton";
 import { useEffect, useState } from "react";
 import { fetchPersonDetails, fetchPersonDetailsById } from "@/api/connection";
@@ -8,10 +8,11 @@ import { unknownImage } from "@/utilities/other";
 import DetailsElement from "./DetailsElement";
 
 const PersonDetails = () => {
-  const [personDetails, setPersonDetails] = useState<PersonData | null>(null);
+  const [personDetails, setPersonDetails] = useState<PersonData[] | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [person, setPerson] = useState<Actor | null>(null);
   const { personId } = useParams();
+  const navigate = useNavigate();
   console.log(personDetails);
   console.log(person);
 
@@ -38,11 +39,11 @@ const PersonDetails = () => {
   }
 
   return (
-    <div className="mt-headerM xl:pl-36 xl:w-contW pb-10">
+    <div className="mt-headerM xl:pl-20 xl:w-contW pb-10 pt-6">
       <ReturnButton />
       <div className="flex gap-16 xs:flex-col pl-10">
         <img
-          className="w-cardW object-cover "
+          className="w-cardW h-imgH object-cover "
           src={
             person?.profile_path
               ? `https://image.tmdb.org/t/p/w500/${person.profile_path}`
@@ -50,26 +51,26 @@ const PersonDetails = () => {
           }
           alt={`actor's name: ${person?.name}`}
         />
-        <div className="w-7/12 flex flex-col gap-10">
+        <div className="max-w-9/12	 flex flex-col gap-10">
           {person && (
-            <DetailsElement title={person?.name} text={person.biography} />
+            <div className="flex gap-14 flex-col">
+              <DetailsElement title={person.name} text={person.biography} />
+
+              <DetailsElement
+                title={"Popularity index:"}
+                text={person.popularity.toFixed(2)}
+              />
+            </div>
           )}
-          {/* <DetailsElement
-            title={movieDetails.title}
-            text={`User score: ${(movieDetails.vote_average * 10).toFixed(
-              2
-            )} % `}
-          /> */}
-          {/* <DetailsElement title={"Genres"} text={"text"}>
-          <ul>
-            {movieDetails.genres.map((genre) => (
-              <li key={genre.id}>{genre.name}</li>
-            ))}
-          </ul>
-        </DetailsElement> */}
-          {/* <AdditionalInfoSection /> */}
+          <div
+            onClick={() => navigate("filmography", { replace: true })}
+            className="w-fit cursor-pointer hover:text-white mr-4  rounded-md px-4 py-1 inline bg-gray-800 hover:bg-gray-900"
+          >
+            Filmography
+          </div>
         </div>
       </div>
+      <Outlet />
     </div>
   );
 };

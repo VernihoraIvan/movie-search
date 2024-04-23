@@ -38,7 +38,7 @@ const TVsDetails = () => {
   }
 
   return (
-    <div className="mt-headerM xl:pl-36 xl:w-contW pb-10">
+    <div className="mt-headerM xl:pl-20 xl:w-contW pb-10 pt-6">
       <ReturnButton />
       <div className="flex gap-16 xs:flex-col pl-10">
         <img
@@ -56,17 +56,9 @@ const TVsDetails = () => {
             title={tvDetails.name}
             text={`User score: ${(tvDetails.vote_average * 10).toFixed(2)} % `}
           />
-          {/* <DetailsElement title={"Genres"} text={"text"}>
-        <ul>
-          {tvDetails.genres.map((genre) => (
-            <li key={genre.id}>{genre.name}</li>
-          ))}
-        </ul>
-      </DetailsElement> */}
           <AdditionalInfoSection />
         </div>
       </div>
-
       <Outlet />
     </div>
   );
