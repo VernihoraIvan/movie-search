@@ -51,6 +51,8 @@ export interface PersonData {
   credit_id: string;
   order: number;
   media_type: string;
+  name?: string;
+  first_air_date?: string;
 }
 
 export interface Actor {

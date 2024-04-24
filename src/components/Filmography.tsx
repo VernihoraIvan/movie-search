@@ -36,6 +36,12 @@ const Filmography = () => {
     return <Loader />;
   }
 
+  personDetails?.sort((a, b) => {
+    return (
+      new Date(b.release_date).getTime() - new Date(a.release_date).getTime()
+    );
+  });
+
   return (
     <div>
       <h2 className="text-2xl mt-10">Known for:</h2>
@@ -56,12 +62,14 @@ const Filmography = () => {
                 }
                 alt={element.title}
               />
-              <div className="h-12 flex flex-col justify-between">
-                <p className="h-6 text-white text-center overflow-y-hidden">
-                  {element.title}
+              <div className="h-12 flex flex-col justify-between mt-2">
+                <p className="h-6 text-sm text-white text-center overflow-y-hidden">
+                  {element.title ? element.title : element.name}
                 </p>
-                <p className="text-center">
-                  {element.release_date?.slice(0, 4)}
+                {/* <p>{element.character ? element.character : ""}</p> */}
+                <p className="text-center text-sm">
+                  {element.release_date && element.release_date.slice(0, 4)}
+                  {element.first_air_date && element.first_air_date.slice(0, 4)}
                 </p>
               </div>
             </li>
