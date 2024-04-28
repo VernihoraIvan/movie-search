@@ -23,9 +23,12 @@ const MovieCard = memo(({ movie }: MovieCardProps) => {
   const isActive = favoriteMovies.includes(movie.id);
 
   return (
-    <div className="relative h-full">
+    <div
+      className="relative h-full shadow-md hover:shadow-lg 
+            transition-shadow duration-200"
+    >
       <Link className="flex h-full" to={`/movies/${movie.id}`}>
-        <div className="rounded-lg shadow-xl col-span-1 row-span-1">
+        <div className="rounded-lg col-span-1 row-span-1">
           <img
             className="object-cover h-80"
             src={

@@ -58,7 +58,9 @@ const Cast = () => {
         {cast.map((element) => (
           <li
             onClick={() => handlerCastOnClick(element.id)}
-            className="rounded-md cursor-pointer flex gap-6 flex-col max-w-36 max-h-72 overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-200"
+            className="rounded-md cursor-pointer flex gap-6 flex-col 
+            max-w-36 max-h-72 overflow-hidden shadow-md hover:shadow-lg 
+            transition-shadow duration-200"
             key={element.credit_id}
           >
             <img

@@ -43,7 +43,9 @@ const PersonDetails = () => {
 
   return (
     <div className="mt-headerM xl:pl-20 xl:w-contW pb-10 pt-6">
-      <ReturnButton />
+      <div className="mb-5 ml-10">
+        <ReturnButton />
+      </div>
       <div className="flex gap-16 xs:flex-col pl-10">
         <img
           className="w-cardW h-imgH object-cover "
