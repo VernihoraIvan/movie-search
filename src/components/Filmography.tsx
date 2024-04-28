@@ -54,7 +54,7 @@ const Filmography = () => {
           personDetails.map((element) => (
             <li
               onClick={() => handlerCastOnClick(element.id)}
-              className="cursor-pointer flex  mt-10 flex-col max-w-36 max-h-cardW overflow-hidden"
+              className="rounded-md cursor-pointer flex  mt-10 flex-col max-w-36 max-h-cardW overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-200"
               key={element.credit_id}
             >
               <img

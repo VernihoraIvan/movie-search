@@ -1,3 +1,4 @@
+/// <reference types="vite-plugin-svgr/client" />
 import { NavLink } from "react-router-dom";
 import BurgerMenuIcon from "@/assets/icons/burgerMenu.svg?react";
 import { useState } from "react";
@@ -31,7 +32,7 @@ const BurgerMenu = () => {
             className="border border-solid border-grey py-2 px-4 rounded-xl w-28"
             to="/"
           >
-            Home
+            Movies
           </NavLink>
           <NavLink
             className="border border-solid border-grey py-2 px-4 rounded-xl w-28"
@@ -49,7 +50,7 @@ const BurgerMenu = () => {
             className="border border-solid border-grey py-2 px-4 rounded-xl w-28"
             to="/wishlist"
           >
-            Wishlist
+            Favorites
           </NavLink>
         </div>
       )}

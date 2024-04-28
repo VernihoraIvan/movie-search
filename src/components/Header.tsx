@@ -21,7 +21,7 @@ const Header = () => {
         <NavLink to="/search">Search</NavLink>
         <NavLink to="/">Movies</NavLink>
         <NavLink to="/tv">TV series</NavLink>
-        <NavLink to="/wishlist">Wishlist</NavLink>
+        <NavLink to="/wishlist">Favorites</NavLink>
       </div>
       <ModeToggle />
     </header>

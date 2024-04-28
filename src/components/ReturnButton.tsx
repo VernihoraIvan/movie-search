@@ -7,19 +7,17 @@ const ReturnButton = () => {
   const { theme } = useTheme();
   const isLight = theme === "light";
   return (
-    <div className="  mb-5 ml-10">
-      <button
-        className={clsx(
-          " py-2 px-4 rounded",
-          !isLight && "hover:text-white  bg-gray-800 hover:bg-gray-900",
-          isLight &&
-            "hover:text-hoverColorLight text-btnTextCol hover:text-colorLight bg-btnCol hover:bg-btnHoverCol"
-        )}
-        onClick={() => navigate(-1)}
-      >
-        Go back
-      </button>
-    </div>
+    <button
+      className={clsx(
+        " py-2 px-4 rounded",
+        !isLight && "hover:text-white  bg-gray-800 hover:bg-gray-900",
+        isLight &&
+          "hover:text-hoverColorLight text-btnTextCol hover:text-colorLight bg-btnCol hover:bg-btnHoverCol"
+      )}
+      onClick={() => navigate(-1)}
+    >
+      Go back
+    </button>
   );
 };
 

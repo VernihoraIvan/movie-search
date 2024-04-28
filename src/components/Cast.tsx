@@ -58,7 +58,7 @@ const Cast = () => {
         {cast.map((element) => (
           <li
             onClick={() => handlerCastOnClick(element.id)}
-            className="cursor-pointer flex gap-6 flex-col max-w-36 max-h-72 overflow-hidden"
+            className="rounded-md cursor-pointer flex gap-6 flex-col max-w-36 max-h-72 overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-200"
             key={element.credit_id}
           >
             <img
@@ -70,16 +70,17 @@ const Cast = () => {
               }
               alt={element.name}
             />
-            <div className="h-12 overflow-y-hidden">
+            <div className="text-center h-12 overflow-y-hidden">
               <h3
                 className={clsx(
+                  "h-6 text-sm  text-center overflow-y-hidden",
                   isLight && "text-secColorLight",
                   !isLight && "text-white"
                 )}
               >
                 {element.name}
               </h3>
-              <p>{element.character}</p>
+              <p className="text-center text-sm">{element.character}</p>
             </div>
           </li>
         ))}

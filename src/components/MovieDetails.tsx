@@ -7,11 +7,26 @@ import DetailsElement from "./DetailsElement";
 import AdditionalInfoSection from "./AdditionalInfoSection";
 import { unknownImage } from "@/utilities/other";
 import { Loader } from "./Loader";
+import { useDispatch, useSelector } from "react-redux";
+import { getfavoriteMovie } from "@/redux/favorite/selectors";
+import { toggleFavoriteMovies } from "@/redux/favorite/slice";
+import clsx from "clsx";
+import { useTheme } from "@/context/Hooks";
 
 const MovieDeatails = () => {
   const { moviesId } = useParams();
   const [movieDetails, setMovieDetails] = useState<MovieData | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const favoriteMovies = useSelector(getfavoriteMovie);
+  const dispatch = useDispatch();
+  const { theme } = useTheme();
+  const isLight = theme === "light";
+
+  const onToggle = (movie: MovieData) => {
+    dispatch(toggleFavoriteMovies(movie.id));
+  };
+
+  const isActive = favoriteMovies.includes(movieDetails?.id);
 
   useEffect(() => {
     setIsLoading(true);
@@ -39,7 +54,20 @@ const MovieDeatails = () => {
 
   return (
     <div className="mt-headerM xl:pl-20 xl:w-contW pb-10 pt-6">
-      <ReturnButton />
+      <div className="flex gap-4 mb-5 ml-10">
+        <ReturnButton />
+        <button
+          className={clsx(
+            "w-fit py-2 px-4 rounded",
+            !isLight && "hover:text-white  bg-gray-800 hover:bg-gray-900",
+            isLight &&
+              "hover:text-hoverColorLight text-btnTextCol hover:text-colorLight bg-btnCol hover:bg-btnHoverCol"
+          )}
+          onClick={() => onToggle(movieDetails)}
+        >
+          {isActive ? "Remove from favorite" : "Add to favorite"}
+        </button>
+      </div>
       <div className="flex gap-16 xs:flex-col pl-10">
         <img
           className="w-cardW h-imgH object-cover "

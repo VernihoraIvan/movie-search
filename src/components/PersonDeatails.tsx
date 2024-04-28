@@ -56,7 +56,7 @@ const PersonDetails = () => {
         />
         <div className="max-w-9/12	 flex flex-col gap-10">
           {person && (
-            <div className="flex gap-14 flex-col">
+            <div className="flex gap-4 flex-col">
               <DetailsElement title={person.name} text={person.biography} />
 
               <DetailsElement
