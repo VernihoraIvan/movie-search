@@ -22,7 +22,7 @@ const TVCard = memo(({ movie }: TVCardProps) => {
   const isActive = TVs?.includes(movie.id);
 
   return (
-    <div className="relative h-full text-grey">
+    <div className="relative h-full ">
       <Link className="flex h-full" to={`/tv/${movie.id}`}>
         <div className="rounded-lg shadow-xl col-span-1 row-span-1">
           <img
