@@ -4,12 +4,16 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Loader } from "./Loader";
 import { unknownImage } from "@/utilities/other";
+import clsx from "clsx";
+import { useTheme } from "@/context/Hooks";
 
 const Filmography = () => {
   const [personDetails, setPersonDetails] = useState<PersonData[] | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const { personId } = useParams();
+  const { theme } = useTheme();
+  const isLight = theme === "light";
   const navigate = useNavigate();
 
   const handlerCastOnClick = async (id: number) => {
@@ -63,9 +67,15 @@ const Filmography = () => {
                 alt={element.title}
               />
               <div className="h-12 flex flex-col justify-between mt-2">
-                <p className="h-6 text-sm text-white text-center overflow-y-hidden">
+                <h3
+                  className={clsx(
+                    "h-6 text-sm  text-center overflow-y-hidden",
+                    isLight && "text-secColorLight",
+                    !isLight && "text-white"
+                  )}
+                >
                   {element.title ? element.title : element.name}
-                </p>
+                </h3>
                 {/* <p>{element.character ? element.character : ""}</p> */}
                 <p className="text-center text-sm">
                   {element.release_date && element.release_date.slice(0, 4)}

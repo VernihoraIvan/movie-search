@@ -53,9 +53,11 @@ const MovieDeatails = () => {
         <div className="w-7/12 flex flex-col gap-10">
           <DetailsElement
             title={movieDetails.title}
-            text={`User score: ${(movieDetails.vote_average * 10).toFixed(
-              2
-            )} % `}
+            text={`User score: ${
+              isNaN(movieDetails.vote_average)
+                ? "0"
+                : (movieDetails.vote_average * 10).toFixed(2)
+            } % `}
           />
           <DetailsElement title={"Overview"} text={movieDetails.overview} />
 

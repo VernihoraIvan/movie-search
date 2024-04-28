@@ -1,3 +1,5 @@
+import { useTheme } from "@/context/Hooks";
+import clsx from "clsx";
 import { useState } from "react";
 
 interface HandlerOnChange {
@@ -6,6 +8,8 @@ interface HandlerOnChange {
 
 const Searchbar = ({ onChange }: HandlerOnChange) => {
   const [input, setInput] = useState<string>("");
+  const { theme } = useTheme();
+  const isLight = theme === "light";
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
@@ -27,15 +31,25 @@ const Searchbar = ({ onChange }: HandlerOnChange) => {
             autoComplete="off"
             autoFocus
             placeholder="Please enter movie name"
-            className="xxs:mt-2 xxs:ml-16 bg-inputBg px-1 py-1 ml-2 border-2 border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-black-900 focus:border-transparent"
+            className={clsx(
+              "m-5 py-2 px-4 border-2 border-gray-500 rounded xxs:mt-2 xxs:ml-16 focus:outline-none focus:ring-2 focus:ring-black-900 focus:border-transparent",
+              !isLight && "hover:text-white  bg-gray-800 hover:bg-gray-900",
+              isLight &&
+                "hover:text-hoverColorLight text-btnTextCol hover:text-colorLight bg-btnCol hover:bg-btnHoverCol"
+            )}
           />
-          <button
-            className="my-5 mx-5 bg-gray-800 hover:bg-gray-900 hover:text-white font-bold py-2 px-4 rounded"
-            type="submit"
-          >
-            Submit
-          </button>
         </label>
+        <button
+          className={clsx(
+            "m-5 py-2 px-4 rounded",
+            !isLight && "hover:text-white  bg-gray-800 hover:bg-gray-900",
+            isLight &&
+              "hover:text-hoverColorLight text-btnTextCol hover:text-colorLight bg-btnCol hover:bg-btnHoverCol"
+          )}
+          type="submit"
+        >
+          Submit
+        </button>
       </form>
     </div>
   );

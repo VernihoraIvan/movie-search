@@ -1,15 +1,21 @@
-/// <reference types="vite-plugin-svgr/client" />
-
+// / <reference types="vite-plugin-svgr/client" />
 import { NavLink } from "react-router-dom";
-// import Logo from "@/assets/icons/popcorn.svg?react";
 import BurgerMenu from "./BurgerMenu";
+import { ModeToggle } from "./DropDownMenu";
+import { useTheme } from "@/context/Hooks";
+import clsx from "clsx";
+
 const Header = () => {
+  const { theme } = useTheme();
+  const isLight = theme === "light";
   return (
-    // <header className="flex items-center justify-around py-4 px-4 border-2 bg-darkbg rounded-lg text-white">
-    <header className="top-0 w-full z-10 bg-bckgr text-white py-4 px-6 shadow-lg flex items-center justify-around fixed">
-      {/* <NavLink className=" xs:mr-0 mr-60" to="/">
-        <Logo className="h-14 w-14" />
-      </NavLink> */}
+    <header
+      className={clsx(
+        "top-0 w-full z-10   py-4 px-6 shadow-lg flex items-center justify-around fixed",
+        isLight && "bg-bckgrLight text-colorLight",
+        !isLight && "text-white bg-bckgrDark"
+      )}
+    >
       <BurgerMenu />
       <div className="flex gap-10 xxs:hidden">
         <NavLink to="/search">Search</NavLink>
@@ -17,6 +23,7 @@ const Header = () => {
         <NavLink to="/tv">TV series</NavLink>
         <NavLink to="/wishlist">Wishlist</NavLink>
       </div>
+      <ModeToggle />
     </header>
   );
 };

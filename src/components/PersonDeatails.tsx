@@ -6,6 +6,8 @@ import { Actor, PersonData } from "@/utilities/interfaces";
 import { Loader } from "./Loader";
 import { unknownPhoto } from "@/utilities/other";
 import DetailsElement from "./DetailsElement";
+import clsx from "clsx";
+import { useTheme } from "@/context/Hooks";
 
 const PersonDetails = () => {
   const [personDetails, setPersonDetails] = useState<PersonData[] | null>(null);
@@ -13,8 +15,9 @@ const PersonDetails = () => {
   const [person, setPerson] = useState<Actor | null>(null);
   const { personId } = useParams();
   const navigate = useNavigate();
+  const { theme } = useTheme();
+  const isLight = theme === "light";
   console.log(personDetails);
-  console.log(person);
 
   useEffect(() => {
     const fetchPerson = async () => {
@@ -64,7 +67,12 @@ const PersonDetails = () => {
           )}
           <div
             onClick={() => navigate("filmography", { replace: true })}
-            className="w-fit cursor-pointer hover:text-white mr-4  rounded-md px-4 py-1 inline bg-gray-800 hover:bg-gray-900"
+            className={clsx(
+              "mr-4 rounded-md py-2 px-4 inline w-fit cursor-pointer",
+              !isLight && "hover:text-white  bg-gray-800 hover:bg-gray-900",
+              isLight &&
+                "hover:text-hoverColorLight text-btnTextCol hover:text-colorLight bg-btnCol hover:bg-btnHoverCol"
+            )}
           >
             Filmography
           </div>

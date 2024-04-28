@@ -1,12 +1,32 @@
+import tailwindcssAnimate from "tailwindcss-animate";
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: ["class"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
+  prefix: "",
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      // screens: {
+      //   "2xl": "1400px",
+      // },
+    },
     extend: {
-      animation: {
-        "fade-in": "fade-in 0.5s ease-out",
-      },
       keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
         "fade-in": {
           "0%": { opacity: 0 },
           "100%": { opacity: 1 },
@@ -44,21 +64,25 @@ export default {
         45: "45%",
       },
       colors: {
-        // bluesp: "#0ea5e9",
-        // bgDarkTheme: "#1e293b",
-        // buttonDark: "#2f418a",
-        // buttonDarkHov: "#0f121b",
-        // inputDark: "#3c4155",
-        // darkSecondText: "#c2c8cf",
-        // iconDark: "#1e293b",
-        inputBg: "#363636",
-        bckgr: "#141414",
+        inputBgDark: "#363636",
+        bckgrDark: "#141414",
+        bckgrLight: "#f4f3ee",
+        colorLight: "#463f3a",
+        secColorLight: "#8A817C",
+        hoverBtnLight: "#BCB8B1",
+        btnCol: "#8A817C",
+        btnHoverCol: "#BCB8B1",
+        btnTextCol: "#f0dfda",
         grey: "#ababab",
-        darkbg: "#334d5c",
+        // darkbg: "#334d5c",
         mainShadow: "10px 10px 25px -4px rgba(0,0,0,0.75)",
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
-  variants: {},
-  plugins: [],
+  plugins: [tailwindcssAnimate],
+  // plugins: [require("tailwindcss-animate")],
 };

@@ -5,6 +5,8 @@ import DetailsElement from "./DetailsElement";
 import { CastData } from "@/utilities/interfaces";
 import { unknownPhoto } from "@/utilities/other";
 import { Loader } from "./Loader";
+import clsx from "clsx";
+import { useTheme } from "@/context/Hooks";
 
 const Cast = () => {
   const [cast, setCast] = useState<CastData[]>([]);
@@ -12,6 +14,8 @@ const Cast = () => {
 
   const { moviesId } = useParams();
   const navigate = useNavigate();
+  const { theme } = useTheme();
+  const isLight = theme === "light";
 
   const handlerCastOnClick = async (id: number) => {
     navigate(`/person/${id.toString()}`);
@@ -54,7 +58,7 @@ const Cast = () => {
         {cast.map((element) => (
           <li
             onClick={() => handlerCastOnClick(element.id)}
-            className="cursor-pointer flex gap-6 mt-10 flex-col max-w-36 max-h-72 overflow-hidden"
+            className="cursor-pointer flex gap-6 flex-col max-w-36 max-h-72 overflow-hidden"
             key={element.credit_id}
           >
             <img
@@ -67,7 +71,14 @@ const Cast = () => {
               alt={element.name}
             />
             <div className="h-12 overflow-y-hidden">
-              <h3 className="text-white">{element.name}</h3>
+              <h3
+                className={clsx(
+                  isLight && "text-secColorLight",
+                  !isLight && "text-white"
+                )}
+              >
+                {element.name}
+              </h3>
               <p>{element.character}</p>
             </div>
           </li>
