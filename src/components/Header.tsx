@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import BurgerMenu from "./BurgerMenu";
 import { ModeToggle } from "./DropDownMenu";
 import { useTheme } from "@/context/Hooks";
+import Logo from "@/assets/icons/popcorn.svg?react";
+
 import clsx from "clsx";
 import { useState } from "react";
 
@@ -19,10 +21,13 @@ const Header = () => {
         !isLight && "text-white bg-bckgrDark"
       )}
     >
+      <NavLink className=" xs:mr-4 xxs:hidden" to="/">
+        <Logo className="h-14 w-14" />
+      </NavLink>
       <div className="flex gap-10 xxs:hidden">
         <NavLink to="/search">Search</NavLink>
         <NavLink to="/">Movies</NavLink>
-        <NavLink to="/tv">TV series</NavLink>
+        <NavLink to="/tv">TV's</NavLink>
         <NavLink to="/wishlist">Favorites</NavLink>
       </div>
 
