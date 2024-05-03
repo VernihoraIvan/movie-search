@@ -7,6 +7,15 @@ export interface MovieListResponse {
   total_results: number;
 }
 
+export interface ModeToggleProps {
+  menuOpen: boolean;
+}
+
+export interface BurgerMenuProps {
+  menuOpen: boolean;
+  setMenuOpen: (value: boolean) => void;
+}
+
 export interface TVListResponse {
   page: number;
   results: TVData[];

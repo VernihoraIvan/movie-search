@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-// import MovieCard from "./MovieCard";
 import { MovieData } from "@/utilities/interfaces";
 import { fetchFavorites } from "@/api/connection";
 import { useSelector } from "react-redux";

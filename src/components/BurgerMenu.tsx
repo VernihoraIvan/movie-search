@@ -1,16 +1,22 @@
 /// <reference types="vite-plugin-svgr/client" />
 import { NavLink } from "react-router-dom";
 import BurgerMenuIcon from "@/assets/icons/burgerMenu.svg?react";
-import { useState } from "react";
 import Logo from "@/assets/icons/popcorn.svg?react";
 import CrossIcon from "@/assets/icons/close_icon.svg?react";
-const BurgerMenu = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+import { BurgerMenuProps } from "@/utilities/interfaces";
+import { useTheme } from "@/context/Hooks";
+import clsx from "clsx";
+
+const BurgerMenu = ({ menuOpen, setMenuOpen }: BurgerMenuProps) => {
+  const { theme } = useTheme();
+
+  const isLight = theme === "light";
+
   const handleMenu = () => {
     setMenuOpen(!menuOpen);
   };
   return (
-    <div className="xxs:w-full">
+    <div className="xxs:w-full mr-5">
       {!menuOpen && (
         <div className="flex justify-between">
           <NavLink className=" xs:mr-0 " to="/">
@@ -27,7 +33,12 @@ const BurgerMenu = () => {
           onClick={handleMenu}
           className="py-8 flex-col gap-10 xxs:flex hidden w-screen h-screen z-10s"
         >
-          <CrossIcon className="absolute fill-white w-6 h-6 right-12" />
+          <CrossIcon
+            className={clsx(
+              "absolute fill-white w-6 h-6 right-12",
+              isLight && "fill-grey"
+            )}
+          />
           <NavLink
             className="border border-solid border-grey py-2 px-4 rounded-xl w-28"
             to="/"
