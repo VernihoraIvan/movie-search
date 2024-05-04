@@ -15,7 +15,8 @@
 To get started with Movie Search App, follow these simple steps:
 
 1. Clone this repository to your local machine.
-	
-	git clone https://github.com/VernihoraIvan/movie-search.git
+```shell
+git clone https://gitlab.com/VernihoraIvan/movie-search.git
+```
 3. Install the necessary dependencies using `npm install`.
 4. Start the development server with `npm run dev`.
