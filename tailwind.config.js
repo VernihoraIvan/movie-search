@@ -13,9 +13,6 @@ export default {
     container: {
       center: true,
       padding: "2rem",
-      // screens: {
-      //   "2xl": "1400px",
-      // },
     },
     extend: {
       keyframes: {
@@ -74,7 +71,6 @@ export default {
         btnHoverCol: "#BCB8B1",
         btnTextCol: "#f0dfda",
         grey: "#ababab",
-        // darkbg: "#334d5c",
         mainShadow: "10px 10px 25px -4px rgba(0,0,0,0.75)",
       },
       animation: {
@@ -84,5 +80,4 @@ export default {
     },
   },
   plugins: [tailwindcssAnimate],
-  // plugins: [require("tailwindcss-animate")],
 };

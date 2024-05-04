@@ -1,7 +1,6 @@
 /// <reference types="vite-plugin-svgr/client" />
 import { NavLink } from "react-router-dom";
 import BurgerMenuIcon from "@/assets/icons/burgerMenu.svg?react";
-// import Logo from "@/assets/icons/popcorn.svg?react";
 import CrossIcon from "@/assets/icons/close_icon.svg?react";
 import { BurgerMenuProps } from "@/utilities/interfaces";
 import { useTheme } from "@/context/Hooks";
@@ -19,9 +18,6 @@ const BurgerMenu = ({ menuOpen, setMenuOpen }: BurgerMenuProps) => {
     <div className="xxs:w-full mr-5">
       {!menuOpen && (
         <div className="flex justify-between">
-          {/* <NavLink className=" xs:mr-0 " to="/">
-            <Logo className="h-14 w-14" />
-          </NavLink> */}
           <BurgerMenuIcon
             onClick={handleMenu}
             className="h-10 w-10 xxs:block hidden animate-fade-in"

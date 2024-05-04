@@ -88,14 +88,13 @@ const MovieDeatails = () => {
             } % `}
           />
           <DetailsElement title={"Overview"} text={movieDetails.overview} />
-
-          {/* <DetailsElement title={"Genres"} text={"text"}>
-          <ul>
-            {movieDetails.genres.map((genre) => (
-              <li key={genre.id}>{genre.name}</li>
-            ))}
-          </ul>
-        </DetailsElement> */}
+          <DetailsElement title={"Genres"} text={"text"}>
+            <ul className="flex gap-5">
+              {movieDetails?.genres.map((genre) => (
+                <li key={genre.id}>{genre.name}</li>
+              ))}
+            </ul>
+          </DetailsElement>
           <AdditionalInfoSection />
         </div>
       </div>

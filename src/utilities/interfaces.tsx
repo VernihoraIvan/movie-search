@@ -23,6 +23,11 @@ export interface TVListResponse {
   total_results: number;
 }
 
+interface Genre {
+  id: number;
+  name: string;
+}
+
 export interface MovieData {
   adult: boolean;
   backdrop_path: string;
@@ -39,6 +44,7 @@ export interface MovieData {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  genres: Genre[];
 }
 
 export interface PersonData {
@@ -97,6 +103,7 @@ export interface TVData {
   vote_average: number;
   vote_count: number;
   origin_country: string[];
+  genres: Genre[];
 }
 
 export interface DetailsElementProps {

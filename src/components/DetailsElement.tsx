@@ -23,7 +23,7 @@ const DetailsElement = ({
       <h2
         className={clsx(
           "mb-3",
-          isLight && "text-colorLight",
+          isLight && "text-secColorLight",
           !isLight && "text-white "
         )}
       >
@@ -40,7 +40,7 @@ const DetailsElement = ({
         </h3>
       )}
       {children && <div>{children}</div>}
-      <div className="my-5">{text}</div>
+      {text !== "text" && <div className="my-5">{text}</div>}
     </div>
   );
 };
