@@ -7,6 +7,7 @@ const DetailsElement = ({
   text,
   author,
   children,
+  release,
 }: DetailsElementProps) => {
   const { theme } = useTheme();
   const isLight = theme === "light";
@@ -22,13 +23,14 @@ const DetailsElement = ({
     <div>
       <h2
         className={clsx(
-          "mb-3",
+          "mb-1",
           isLight && "text-secColorLight",
           !isLight && "text-white "
         )}
       >
         {title}
       </h2>
+      {release && <p>Release date: {release}</p>}
       {author && (
         <h3
           className={clsx(
@@ -40,7 +42,7 @@ const DetailsElement = ({
         </h3>
       )}
       {children && <div>{children}</div>}
-      {text !== "text" && <div className="my-5">{text}</div>}
+      {text !== "text" && <div className="mb-5">{text}</div>}
     </div>
   );
 };

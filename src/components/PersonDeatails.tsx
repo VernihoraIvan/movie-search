@@ -17,7 +17,6 @@ const PersonDetails = () => {
   const navigate = useNavigate();
   const { theme } = useTheme();
   const isLight = theme === "light";
-  console.log(personDetails);
 
   useEffect(() => {
     const fetchPerson = async () => {
@@ -39,6 +38,10 @@ const PersonDetails = () => {
 
   if (isLoading) {
     return <Loader />;
+  }
+
+  if (!personDetails) {
+    return;
   }
 
   return (

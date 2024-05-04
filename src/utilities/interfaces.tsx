@@ -111,6 +111,7 @@ export interface DetailsElementProps {
   text: string;
   author?: string;
   children?: ReactNode;
+  release?: string;
 }
 
 export interface CastData {

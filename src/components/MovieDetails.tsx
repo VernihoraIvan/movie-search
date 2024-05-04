@@ -1,3 +1,4 @@
+import { parseISO, format } from "date-fns";
 import { fetchMovieDetails } from "@/api/connection";
 import { MovieData } from "@/utilities/interfaces";
 import { useEffect, useState } from "react";
@@ -22,12 +23,6 @@ const MovieDeatails = () => {
   const { theme } = useTheme();
   const isLight = theme === "light";
 
-  const onToggle = (movie: MovieData) => {
-    dispatch(toggleFavoriteMovies(movie.id));
-  };
-
-  const isActive = favoriteMovies.includes(movieDetails?.id);
-
   useEffect(() => {
     setIsLoading(true);
     const getMovieDetails = async () => {
@@ -43,6 +38,20 @@ const MovieDeatails = () => {
     };
     getMovieDetails();
   }, [moviesId]);
+
+  const onToggle = (movie: MovieData) => {
+    dispatch(toggleFavoriteMovies(movie.id));
+  };
+
+  if (!movieDetails) {
+    return null;
+  }
+  const formattedDate = format(
+    parseISO(movieDetails?.release_date),
+    "MMMM yyyy"
+  );
+
+  const isActive: boolean = favoriteMovies.includes(movieDetails?.id);
 
   if (isLoading) {
     return <Loader />;
@@ -78,9 +87,10 @@ const MovieDeatails = () => {
           }
           alt={`movie's name: ${movieDetails?.title}`}
         />
-        <div className="w-7/12 flex flex-col gap-10">
+        <div className="w-7/12 flex flex-col ">
           <DetailsElement
             title={movieDetails.title}
+            release={formattedDate}
             text={`User score: ${
               isNaN(movieDetails.vote_average)
                 ? "0"

@@ -48,7 +48,7 @@ const Filmography = () => {
 
   return (
     <div>
-      <h2 className="text-2xl mt-10">Known for:</h2>
+      <h2 className="text-2xl mt-10 ml-10">Known for:</h2>
       <ul className="pl-10 flex flex-wrap gap-x-8 gap-y-5 sm:justify-center">
         {personDetails &&
           personDetails.map((element) => (

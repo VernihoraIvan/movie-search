@@ -1,3 +1,4 @@
+import { parseISO, format } from "date-fns";
 import { fetchTVsDetails } from "@/api/connection";
 import { TVData } from "@/utilities/interfaces";
 import { useEffect, useState } from "react";
@@ -26,8 +27,6 @@ const TVsDetails = () => {
     dispatch(toggleFavoriteTVs(tv.id));
   };
 
-  const isActive = favoriteTVs.includes(tvDetails?.id);
-
   useEffect(() => {
     setIsLoading(true);
     const getMovieDetails = async () => {
@@ -44,12 +43,15 @@ const TVsDetails = () => {
     getMovieDetails();
   }, [tvId]);
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
   if (!tvDetails) {
     return null;
+  }
+
+  const formattedDate = format(parseISO(tvDetails.first_air_date), "MMMM yyyy");
+  const isActive: boolean = favoriteTVs.includes(tvDetails?.id);
+
+  if (isLoading) {
+    return <Loader />;
   }
 
   return (
@@ -78,9 +80,10 @@ const TVsDetails = () => {
           }
           alt={`tv's name: ${tvDetails?.name}`}
         />
-        <div className="w-7/12 flex flex-col gap-10">
+        <div className="w-7/12 flex flex-col ">
           <DetailsElement
             title={tvDetails.name}
+            release={formattedDate}
             text={`User score: ${
               isNaN(tvDetails.vote_average)
                 ? "0"
