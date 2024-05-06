@@ -28,7 +28,7 @@ const MovieDeatails = () => {
     const getMovieDetails = async () => {
       try {
         const data = await fetchMovieDetails(moviesId as string);
-        setMovieDetails(data.results);
+        setMovieDetails(data);
       } catch (error) {
         console.log("error", error);
         setMovieDetails(null);

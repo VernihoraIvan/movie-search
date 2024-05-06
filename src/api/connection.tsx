@@ -1,8 +1,16 @@
 import axios from "axios";
 import {
+  MovieByQueryResponse,
   MovieData,
+  MovieDetailsResponse,
   MovieListResponse,
+  MovieReviewResponse,
+  MoviesCastResponse,
+  PersonAdditionalDetailsResponse,
+  PersonDetailsResponse,
+  TVCastResponse,
   TVData,
+  TVDetailsResponse,
   TVListResponse,
 } from "@/utilities/interfaces";
 
@@ -32,10 +40,11 @@ export const fetchTVSeries = async (): Promise<TVData[]> => {
 
 export const fetchMovieByQuery = async (query: string, page: number) => {
   try {
-    const { data } = await axios.get(
+    const { data } = await axios.get<MovieByQueryResponse>(
       `/search/movies?query=${query}&page=${page}`
     );
-    return data.results;
+    const results = data.results;
+    return results;
   } catch (error) {
     console.log(error);
   }
@@ -43,27 +52,28 @@ export const fetchMovieByQuery = async (query: string, page: number) => {
 
 export const fetchMovieDetails = async (id: string) => {
   try {
-    const { data } = await axios.get(`/movie/${id}`);
-    return data;
+    const { data } = await axios.get<MovieDetailsResponse>(`/movie/${id}`);
+    const res = data.results;
+    return res;
   } catch (error) {
     console.log(error);
-    return [];
+    return null;
   }
 };
 
 export const fetchTVsDetails = async (id: string) => {
   try {
-    const { data } = await axios.get(`/tv/${id}`);
+    const { data } = await axios.get<TVDetailsResponse>(`/tv/${id}`);
     return data.results;
   } catch (error) {
     console.log(error);
-    return [];
+    return null;
   }
 };
 
 export const fetchMovieCast = async (id: string) => {
   try {
-    const { data } = await axios.get(`movie/${id}/credits`);
+    const { data } = await axios.get<MoviesCastResponse>(`movie/${id}/credits`);
     return data.results;
   } catch (error) {
     console.log(error);
@@ -72,7 +82,7 @@ export const fetchMovieCast = async (id: string) => {
 
 export const fetchTVCast = async (id: string) => {
   try {
-    const { data } = await axios.get(`tv/${id}/credits`);
+    const { data } = await axios.get<TVCastResponse>(`tv/${id}/credits`);
     return data.results;
   } catch (error) {
     console.log(error);
@@ -81,25 +91,33 @@ export const fetchTVCast = async (id: string) => {
 
 export const fetchPersonDetails = async (id: string) => {
   try {
-    const { data } = await axios.get(`/person/${id}/combined_credits`);
+    const { data } = await axios.get<PersonDetailsResponse>(
+      `/person/${id}/combined_credits`
+    );
     return data.results;
   } catch (error) {
     console.log(error);
+    return null;
   }
 };
 
 export const fetchPersonDetailsById = async (id: string) => {
   try {
-    const { data } = await axios.get(`/person/${id}`);
+    const { data } = await axios.get<PersonAdditionalDetailsResponse>(
+      `/person/${id}`
+    );
     return data;
   } catch (error) {
     console.log(error);
+    return null;
   }
 };
 
 export const fetchMovieReview = async (id: string) => {
   try {
-    const { data } = await axios.get(`/movie/${id}/reviews`);
+    const { data } = await axios.get<MovieReviewResponse>(
+      `/movie/${id}/reviews`
+    );
     return data.results;
   } catch (error) {
     console.log(error);
@@ -108,7 +126,9 @@ export const fetchMovieReview = async (id: string) => {
 
 export const fetchFavoritesMovies = async (ids: number[]) => {
   try {
-    const requests = ids.map((id) => axios.get(`/movie/${id}`));
+    const requests = ids.map((id) =>
+      axios.get<MovieDetailsResponse>(`/movie/${id}`)
+    );
     const responses = await Promise.all(requests);
     return responses.map((response) => response.data.results);
   } catch (error) {
@@ -119,7 +139,7 @@ export const fetchFavoritesMovies = async (ids: number[]) => {
 
 export const fetchFavoritesTVs = async (ids: number[]) => {
   try {
-    const requests = ids.map((id) => axios.get(`/tv/${id}`));
+    const requests = ids.map((id) => axios.get<TVDetailsResponse>(`/tv/${id}`));
     const responses = await Promise.all(requests);
     return responses.map((response) => response.data.results);
   } catch (error) {

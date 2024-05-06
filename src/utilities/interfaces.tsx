@@ -19,6 +19,48 @@ export interface TVListResponse {
   response: TVData[];
 }
 
+export interface MovieDetailsResponse {
+  code: number;
+  status: string;
+  results: MovieData;
+}
+
+export interface TVDetailsResponse {
+  code: number;
+  status: string;
+  results: TVData;
+}
+
+export interface MoviesCastResponse {
+  code: number;
+  status: string;
+  results: CastData[];
+}
+
+export interface TVCastResponse {
+  code: number;
+  status: string;
+  results: TVData[];
+}
+
+export interface PersonDetailsResponse {
+  code: number;
+  status: string;
+  results: PersonData[];
+}
+
+export interface PersonAdditionalDetailsResponse {
+  code: number;
+  status: string;
+  results: Actor;
+}
+
+export interface MovieReviewResponse {
+  code: number;
+  status: string;
+  results: ReviewData;
+}
+
 export interface ModeToggleProps {
   menuOpen: boolean;
 }
@@ -29,7 +71,7 @@ export interface BurgerMenuProps {
 }
 
 export interface MovieByQueryResponse {
-  page: number;
+  page: string;
   results: MovieData[];
   code: number;
   status: string;
