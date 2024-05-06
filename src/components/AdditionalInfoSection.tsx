@@ -1,13 +1,13 @@
-import { useTheme } from "@/context/Hooks";
 import clsx from "clsx";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "@/context/Hooks";
 
 const AdditionalInfoSection = () => {
   const { theme } = useTheme();
   const isLight = theme === "light";
   const navigate = useNavigate();
   return (
-    <div>
+    <div className="mt-10">
       <h2 className={clsx(!isLight && "text-white")}>Additional information</h2>
       <ul className="cursor-pointer mt-4">
         <li

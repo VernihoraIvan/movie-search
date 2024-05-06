@@ -1,5 +1,5 @@
 import { Moon, Sun } from "lucide-react";
-
+import clsx from "clsx";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -8,7 +8,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useTheme } from "@/context/Hooks";
-import clsx from "clsx";
 import { ModeToggleProps } from "@/utilities/interfaces";
 
 export const ModeToggle = ({ menuOpen }: ModeToggleProps) => {

@@ -1,12 +1,12 @@
 // / <reference types="vite-plugin-svgr/client" />
+import clsx from "clsx";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import BurgerMenu from "./BurgerMenu";
 import { ModeToggle } from "./DropDownMenu";
 import { useTheme } from "@/context/Hooks";
 import Logo from "@/assets/icons/popcorn.svg?react";
 
-import clsx from "clsx";
-import { useState } from "react";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -28,7 +28,7 @@ const Header = () => {
         <NavLink to="/search">Search</NavLink>
         <NavLink to="/">Movies</NavLink>
         <NavLink to="/tv">TV's</NavLink>
-        <NavLink to="/wishlist">Favorites</NavLink>
+        <NavLink to="/favorite">Favorites</NavLink>
       </div>
 
       <BurgerMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />

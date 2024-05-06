@@ -1,13 +1,13 @@
 import { Outlet, useNavigate, useParams } from "react-router-dom";
-import ReturnButton from "./ReturnButton";
+import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { fetchPersonDetails, fetchPersonDetailsById } from "@/api/connection";
 import { Actor, PersonData } from "@/utilities/interfaces";
 import { Loader } from "./Loader";
 import { unknownPhoto } from "@/utilities/other";
-import DetailsElement from "./DetailsElement";
-import clsx from "clsx";
 import { useTheme } from "@/context/Hooks";
+import DetailsElement from "./DetailsElement";
+import ReturnButton from "./ReturnButton";
 
 const PersonDetails = () => {
   const [personDetails, setPersonDetails] = useState<PersonData[] | null>(null);
@@ -23,8 +23,8 @@ const PersonDetails = () => {
       try {
         setIsLoading(true);
         const { cast } = await fetchPersonDetails(personId as string);
-        const result = await fetchPersonDetailsById(personId as string);
-        setPerson(result);
+        const response = await fetchPersonDetailsById(personId as string);
+        setPerson(response.results);
         setPersonDetails(cast);
       } catch (error) {
         console.log("error", error);
@@ -63,7 +63,6 @@ const PersonDetails = () => {
           {person && (
             <div className="flex gap-4 flex-col">
               <DetailsElement title={person.name} text={person.biography} />
-
               <DetailsElement
                 title={"Popularity index:"}
                 text={person.popularity.toFixed(2)}

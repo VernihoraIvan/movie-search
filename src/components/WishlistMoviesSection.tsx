@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { MovieData } from "@/utilities/interfaces";
-import { fetchFavorites } from "@/api/connection";
 import { useSelector } from "react-redux";
+import { MovieData } from "@/utilities/interfaces";
+import { fetchFavoritesMovies } from "@/api/connection";
 import { getfavoriteMovie } from "@/redux/favorite/selectors";
 import MovieCard from "./MovieCard";
 import { Loader } from "./Loader";
@@ -15,7 +15,7 @@ const WishlistMoviesSection = () => {
     const getFavoriteMovieData = async () => {
       try {
         setIsLoading(true);
-        const data = await fetchFavorites(favoriteMovies);
+        const data = await fetchFavoritesMovies(favoriteMovies);
         setMovies(data);
       } catch (error) {
         console.log(error);

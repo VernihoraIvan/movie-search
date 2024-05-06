@@ -1,12 +1,12 @@
-import { fetchMovieCast } from "@/api/connection";
+import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import DetailsElement from "./DetailsElement";
-import { CastData } from "@/utilities/interfaces";
+import { fetchMovieCast } from "@/api/connection";
 import { unknownPhoto } from "@/utilities/other";
-import { Loader } from "./Loader";
-import clsx from "clsx";
 import { useTheme } from "@/context/Hooks";
+import { CastData } from "@/utilities/interfaces";
+import { Loader } from "./Loader";
+import DetailsElement from "./DetailsElement";
 
 const Cast = () => {
   const [cast, setCast] = useState<CastData[]>([]);

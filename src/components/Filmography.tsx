@@ -1,10 +1,10 @@
-import { fetchPersonDetails } from "@/api/connection";
-import { PersonData } from "@/utilities/interfaces";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import clsx from "clsx";
+import { fetchPersonDetails } from "@/api/connection";
+import { PersonData } from "@/utilities/interfaces";
 import { Loader } from "./Loader";
 import { unknownImage } from "@/utilities/other";
-import clsx from "clsx";
 import { useTheme } from "@/context/Hooks";
 
 const Filmography = () => {
@@ -76,7 +76,6 @@ const Filmography = () => {
                 >
                   {element.title ? element.title : element.name}
                 </h3>
-                {/* <p>{element.character ? element.character : ""}</p> */}
                 <p className="text-center text-sm">
                   {element.release_date && element.release_date.slice(0, 4)}
                   {element.first_air_date && element.first_air_date.slice(0, 4)}

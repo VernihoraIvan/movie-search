@@ -1,10 +1,22 @@
 import { ReactNode } from "react";
 
+// export interface MovieListResponse {
+//   page: number;
+//   results: MovieData[];
+//   total_pages: number;
+//   total_results: number;
+// }
+
 export interface MovieListResponse {
-  page: number;
-  results: MovieData[];
-  total_pages: number;
-  total_results: number;
+  code: number;
+  status: string;
+  response: MovieData[];
+}
+
+export interface TVListResponse {
+  code: number;
+  status: string;
+  response: TVData[];
 }
 
 export interface ModeToggleProps {
@@ -16,11 +28,11 @@ export interface BurgerMenuProps {
   setMenuOpen: (value: boolean) => void;
 }
 
-export interface TVListResponse {
+export interface MovieByQueryResponse {
   page: number;
-  results: TVData[];
-  total_pages: number;
-  total_results: number;
+  results: MovieData[];
+  code: number;
+  status: string;
 }
 
 interface Genre {

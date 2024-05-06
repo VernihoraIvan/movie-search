@@ -1,6 +1,6 @@
-import { useTheme } from "@/context/Hooks";
 import clsx from "clsx";
 import { useState } from "react";
+import { useTheme } from "@/context/Hooks";
 
 interface HandlerOnChange {
   onChange(query: string): Promise<void>;

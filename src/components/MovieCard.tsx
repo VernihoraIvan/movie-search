@@ -1,10 +1,10 @@
-import { MovieData } from "@/utilities/interfaces";
-import { unknownImage } from "@/utilities/other";
 import { Link } from "react-router-dom";
 import { memo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { MovieData } from "@/utilities/interfaces";
+import { unknownImage } from "@/utilities/other";
 import Bookmark from "@/assets/icons/bookmark_fav.svg?react";
 import BookmarkIcon from "@/assets/icons/Bookmark_unfav.svg?react";
-import { useDispatch, useSelector } from "react-redux";
 import { getfavoriteMovie } from "@/redux/favorite/selectors";
 import { toggleFavoriteMovies } from "@/redux/favorite/slice";
 

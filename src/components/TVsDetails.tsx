@@ -1,18 +1,18 @@
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import clsx from "clsx";
+import { Outlet, useParams } from "react-router-dom";
 import { parseISO, format } from "date-fns";
 import { fetchTVsDetails } from "@/api/connection";
 import { TVData } from "@/utilities/interfaces";
-import { useEffect, useState } from "react";
-import { Outlet, useParams } from "react-router-dom";
+import { unknownImage } from "@/utilities/other";
+import { getfavoriteTVs } from "@/redux/favorite/selectors";
+import { useTheme } from "@/context/Hooks";
+import { toggleFavoriteTVs } from "@/redux/favorite/slice";
 import ReturnButton from "./ReturnButton";
 import DetailsElement from "./DetailsElement";
 import AdditionalInfoSection from "./AdditionalInfoSection";
-import { unknownImage } from "@/utilities/other";
 import { Loader } from "./Loader";
-import { useDispatch, useSelector } from "react-redux";
-import { getfavoriteTVs } from "@/redux/favorite/selectors";
-import { useTheme } from "@/context/Hooks";
-import clsx from "clsx";
-import { toggleFavoriteTVs } from "@/redux/favorite/slice";
 
 const TVsDetails = () => {
   const { tvId } = useParams();

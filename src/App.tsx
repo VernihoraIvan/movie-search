@@ -20,7 +20,7 @@ function App() {
         <Route index path="/" element={<TrendPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/tv" element={<TVSeriesPage />} />
-        <Route path="/wishlist" element={<WishlistPage />} />
+        <Route path="/favorite" element={<WishlistPage />} />
         <Route path="movies/:moviesId/" element={<MovieDeatails />}>
           <Route path="cast" element={<Cast />} />
           <Route path="review" element={<Review />} />

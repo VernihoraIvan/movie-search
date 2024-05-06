@@ -1,18 +1,18 @@
-import { parseISO, format } from "date-fns";
-import { fetchMovieDetails } from "@/api/connection";
-import { MovieData } from "@/utilities/interfaces";
 import { useEffect, useState } from "react";
 import { Outlet, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import clsx from "clsx";
+import { parseISO, format } from "date-fns";
+import { MovieData } from "@/utilities/interfaces";
+import { fetchMovieDetails } from "@/api/connection";
+import { unknownImage } from "@/utilities/other";
+import { Loader } from "./Loader";
+import { getfavoriteMovie } from "@/redux/favorite/selectors";
+import { toggleFavoriteMovies } from "@/redux/favorite/slice";
+import { useTheme } from "@/context/Hooks";
 import ReturnButton from "./ReturnButton";
 import DetailsElement from "./DetailsElement";
 import AdditionalInfoSection from "./AdditionalInfoSection";
-import { unknownImage } from "@/utilities/other";
-import { Loader } from "./Loader";
-import { useDispatch, useSelector } from "react-redux";
-import { getfavoriteMovie } from "@/redux/favorite/selectors";
-import { toggleFavoriteMovies } from "@/redux/favorite/slice";
-import clsx from "clsx";
-import { useTheme } from "@/context/Hooks";
 
 const MovieDeatails = () => {
   const { moviesId } = useParams();
@@ -28,7 +28,7 @@ const MovieDeatails = () => {
     const getMovieDetails = async () => {
       try {
         const data = await fetchMovieDetails(moviesId as string);
-        setMovieDetails(data);
+        setMovieDetails(data.results);
       } catch (error) {
         console.log("error", error);
         setMovieDetails(null);

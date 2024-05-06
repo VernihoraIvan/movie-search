@@ -1,6 +1,6 @@
+import clsx from "clsx";
 import { useTheme } from "@/context/Hooks";
 import { DetailsElementProps } from "@/utilities/interfaces";
-import clsx from "clsx";
 
 const DetailsElement = ({
   title,

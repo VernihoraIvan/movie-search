@@ -1,5 +1,5 @@
-import { useTheme } from "@/context/Hooks";
 import clsx from "clsx";
+import { useTheme } from "@/context/Hooks";
 
 type Props = {
   setPage: React.Dispatch<React.SetStateAction<number>>;

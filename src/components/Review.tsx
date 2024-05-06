@@ -1,9 +1,9 @@
-import { fetchMovieReview } from "@/api/connection";
-import DetailsElement from "./DetailsElement";
+import { Loader } from "./Loader";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { fetchMovieReview } from "@/api/connection";
 import { ReviewData } from "@/utilities/interfaces";
-import { Loader } from "lucide-react";
+import DetailsElement from "./DetailsElement";
 
 const Review = () => {
   const { moviesId } = useParams();

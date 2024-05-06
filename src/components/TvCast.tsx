@@ -1,12 +1,12 @@
-import { fetchTVCast } from "@/api/connection";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import DetailsElement from "./DetailsElement";
+import clsx from "clsx";
+import { fetchTVCast } from "@/api/connection";
 import { CastData } from "@/utilities/interfaces";
 import { unknownPhoto } from "@/utilities/other";
-import { Loader } from "./Loader";
 import { useTheme } from "@/context/Hooks";
-import clsx from "clsx";
+import DetailsElement from "./DetailsElement";
+import { Loader } from "./Loader";
 
 const TvCast = () => {
   const [cast, setCast] = useState<CastData[]>([]);

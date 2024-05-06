@@ -1,10 +1,10 @@
 /// <reference types="vite-plugin-svgr/client" />
+import clsx from "clsx";
 import { NavLink } from "react-router-dom";
 import BurgerMenuIcon from "@/assets/icons/burgerMenu.svg?react";
 import CrossIcon from "@/assets/icons/close_icon.svg?react";
 import { BurgerMenuProps } from "@/utilities/interfaces";
 import { useTheme } from "@/context/Hooks";
-import clsx from "clsx";
 
 const BurgerMenu = ({ menuOpen, setMenuOpen }: BurgerMenuProps) => {
   const { theme } = useTheme();
@@ -55,7 +55,7 @@ const BurgerMenu = ({ menuOpen, setMenuOpen }: BurgerMenuProps) => {
           </NavLink>
           <NavLink
             className="border border-solid border-grey py-2 px-4 rounded-xl w-28"
-            to="/wishlist"
+            to="/favorite"
           >
             Favorites
           </NavLink>

@@ -1,12 +1,12 @@
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { memo } from "react";
 import { TVData } from "@/utilities/interfaces";
 import { unknownPhoto } from "@/utilities/other";
-import { Link } from "react-router-dom";
 import Bookmark from "@/assets/icons/bookmark_fav.svg?react";
 import BookmarkIcon from "@/assets/icons/Bookmark_unfav.svg?react";
-import { useDispatch, useSelector } from "react-redux";
 import { getfavoriteTVs } from "@/redux/favorite/selectors";
 import { toggleFavoriteTVs } from "@/redux/favorite/slice";
-import { memo } from "react";
 
 export interface TVCardProps {
   movie: TVData;

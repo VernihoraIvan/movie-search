@@ -1,30 +1,40 @@
 import { useEffect, useState } from "react";
-import { TVData } from "@/utilities/interfaces";
-import { fetchTVSeries } from "@/api/connection";
 import { useSelector } from "react-redux";
+import { Loader } from "./Loader";
+import { TVData } from "@/utilities/interfaces";
 import { getfavoriteTVs } from "@/redux/favorite/selectors";
 import TVCard from "./TVCard";
+import { fetchFavoritesTVs } from "@/api/connection";
 
 const WishlistTVsSection = () => {
-  const [movies, setMovies] = useState<TVData[]>([]);
+  const [tvs, setTVs] = useState<TVData[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const favoriteMovies = useSelector(getfavoriteTVs);
   useEffect(() => {
-    const getFavoriteMovieData = async () => {
+    const getFavoriteTVData = async () => {
       try {
-        const data = await fetchTVSeries();
-        setMovies(data.filter((movie) => favoriteMovies.includes(movie.id)));
+        setIsLoading(true);
+        const data = await fetchFavoritesTVs(favoriteMovies);
+        setTVs(data);
       } catch (error) {
         console.log("error", error);
-        setMovies([]);
+        setTVs([]);
+      } finally {
+        setIsLoading(false);
       }
     };
-    getFavoriteMovieData();
+    getFavoriteTVData();
   }, [favoriteMovies]);
 
-  if (movies.length === 0) {
+  if (tvs.length === 0) {
     return null;
   }
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <div className="xl:flex xl:flex-col xl:pl-10">
       <h2 className=" mb-10 sm:text-center xxs:ml-0  ml-28 text-3xl">
@@ -32,9 +42,9 @@ const WishlistTVsSection = () => {
       </h2>
       <div>
         <ul className=" md:px-14 flex xs:justify-center sm:px-2 justify-start gap-x-16 gap-y-10 flex-wrap">
-          {movies?.map((movie) => (
-            <li className="w-cardW h-cardH" key={movie.id}>
-              <TVCard movie={movie} />
+          {tvs?.map((tv) => (
+            <li className="w-cardW h-cardH" key={tv.id}>
+              <TVCard movie={tv} />
             </li>
           ))}
         </ul>
