@@ -40,15 +40,20 @@ export interface MoviesCastResponse {
 export interface TVCastResponse {
   code: number;
   status: string;
-  results: TVData[];
+  results: CastData[];
 }
 
 export interface PersonDetailsResponse {
   code: number;
   status: string;
-  results: PersonData[];
+  results: result;
 }
 
+export interface result {
+  cast: PersonData[];
+  crew: [];
+  id: number;
+}
 export interface PersonAdditionalDetailsResponse {
   code: number;
   status: string;

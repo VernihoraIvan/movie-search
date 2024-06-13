@@ -24,8 +24,12 @@ const Filmography = () => {
     const fetchPerson = async () => {
       try {
         setIsLoading(true);
-        const { cast } = await fetchPersonDetails(personId as string);
-        setPersonDetails(cast);
+        const results = await fetchPersonDetails(personId as string);
+        if (!results) {
+          setPersonDetails(null);
+        } else {
+          setPersonDetails(results.cast);
+        }
       } catch (error) {
         console.log("error", error);
         setPersonDetails(null);

@@ -9,7 +9,7 @@ import { Loader } from "./Loader";
 import DetailsElement from "./DetailsElement";
 
 const Cast = () => {
-  const [cast, setCast] = useState<CastData[]>([]);
+  const [cast, setCast] = useState<CastData[] | null>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const { moviesId } = useParams();
@@ -26,7 +26,11 @@ const Cast = () => {
       try {
         setIsLoading(true);
         const data = await fetchMovieCast(moviesId as string);
-        setCast(data);
+        if (!data) {
+          setCast(null);
+        } else {
+          setCast(data);
+        }
         return data;
       } catch (error) {
         console.log(error);

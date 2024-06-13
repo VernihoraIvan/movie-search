@@ -26,7 +26,11 @@ const TvCast = () => {
       try {
         setIsLoading(true);
         const data = await fetchTVCast(tvId as string);
-        setCast(data);
+        if (!data) {
+          setCast([]);
+        } else {
+          setCast(data);
+        }
         return data;
       } catch (error) {
         console.log(error);

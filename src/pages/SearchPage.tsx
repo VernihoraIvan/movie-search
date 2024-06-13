@@ -25,14 +25,18 @@ const SearchPage = () => {
   };
 
   useEffect(() => {
-    const query = searchParams.get("query") || "";
+    const queryParam = searchParams.get("query") || "";
     const fetchSearch = async () => {
       try {
         setIsLoading(true);
-        const results = await fetchMovieByQuery(query, page);
-        setSearchQuery((prev) => [...prev, ...results]);
+        const results = await fetchMovieByQuery(queryParam, page);
+        if (!results) {
+          setSearchQuery([]);
+        } else {
+          setSearchQuery((prev) => [...prev, ...results]);
+        }
         const next = await fetchMovieByQuery(query, page + 1);
-        if (next.length > 0) {
+        if (next && next.length > 0) {
           setIsPresent(true);
         } else {
           setIsPresent(false);

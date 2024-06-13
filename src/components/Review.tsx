@@ -15,7 +15,11 @@ const Review = () => {
     const getMovieReview = async () => {
       try {
         const data = await fetchMovieReview(moviesId as string);
-        setReview(data);
+        if (!data) {
+          setReview(null);
+        } else {
+          setReview(data);
+        }
         return data;
       } catch (error) {
         console.log(error);

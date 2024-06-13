@@ -22,14 +22,18 @@ const PersonDetails = () => {
     const fetchPerson = async () => {
       try {
         setIsLoading(true);
-        const data = await fetchPersonDetails(personId as string);
+        const results = await fetchPersonDetails(personId as string);
         const response = await fetchPersonDetailsById(personId as string);
         if (!response) {
           setPersonDetails(null);
         } else {
           setPerson(response.results);
         }
-        setPersonDetails(data);
+        if (!results) {
+          setPersonDetails(null);
+        } else {
+          setPersonDetails(results.cast);
+        }
       } catch (error) {
         console.log("error", error);
         setPersonDetails(null);
