@@ -14,7 +14,8 @@ import {
   TVListResponse,
 } from "@/utilities/interfaces";
 
-const BASE_URL = "https://movie-search-backend.onrender.com";
+// const BASE_URL = "https://movie-search-backend.onrender.com";
+const BASE_URL = "https://movie-b-c247e0e0ceef.herokuapp.com";
 
 axios.defaults.baseURL = BASE_URL;
 
